@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>全屏图片</title>
+    <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="./bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
+	<script src="./bootstrap/js/jquery-1.9.1.js"></script>
+	<script src="./bootstrap/js/bootstrap.min.js"></script>
+	<style>
+        .fullbg {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .inner-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="fullbg" style="background-image: url('img/1.jpg');">
+        <div class="inner-content">
+            <h1>我就是这么屌</h1>
+        </div>
+    </div>
+    <div class="entry-content">
+        <p>
+            相信方今不再会有人质疑手机仅仅只是一个纯粹的通讯工具，随着移动社交应用日渐成为生活中不可缺少的工具，手机的照相功能表现甚至成为了衡量一部手机好坏的关键指标。在绝大部分的旗舰级手机新品发布会之中，我们经常可以看到各厂商们在介绍自家旗舰级机型拍照能力之时自吹自捧得无可匹敌，但我们深知在这些顶级水平的旗舰级手机当中，仍然需要使用真正的实力去决一胜负，而这正是本文的主要任务。
+        </p>
+        <p>
+            本文我们选择了四款旗舰机型，当中分别有索尼 Xperia Z5 Premium 、苹果 iPhone 6s Plus、 三星 Galaxy S6 Edge+、谷歌 Nexus 6P。
+        </p>
+    </div>
+</body>
+</html>

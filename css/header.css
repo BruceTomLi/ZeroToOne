@@ -1,0 +1,27 @@
+body{
+	background-color: #EEEEEE;
+}
+/*下面的代码可以让首页菜单居中*/
+.navbar-nav {
+  float: none!important;
+  text-align:center;
+  line-height: 56px;
+}
+ul.nav.navbar-nav  li {
+    float:none;
+    display: inline-block;
+    margin: 0em;    
+}
+/*鼠标移动到超链接时,下方出现横条*/
+ul.nav.navbar-nav  li:hover {
+     border-bottom: 2px #006dcc solid;
+}
+/*下面去除Bootstrap默认渲染的菜单样式，是通过浏览器中调试得到的*/
+.navbar-inner{
+	background-color: #FFFFFF;
+	border: none;
+	background-image: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	border-radius: 0!important;
+}

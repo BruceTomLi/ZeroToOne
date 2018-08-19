@@ -1,0 +1,31 @@
+.contentDiv{
+	background-color: #FFFFFF;
+}
+
+.mainContent{
+	padding: 20px;
+}
+
+/*下面的样式用于修饰用户的评论*/
+
+#topicAnswers ul{
+	list-style: none;
+}
+
+#topicAnswers>ul>li{
+	border-bottom: 1px #CCCCCC solid;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+#addCommentDiv{
+	display: none;
+}
+
+#topicAnswers button{
+	margin-right: 5px;
+}
+
+.replyCommnetDiv,.replysForComment{
+	display: none;
+}

@@ -1,0 +1,118 @@
+/**
+ * 下面设置“更多资料”按钮的上浮效果，默认更多资料是隐藏的
+ */
+.moreInfoDiv{
+	text-align: center;
+	margin-top: 20px;
+}
+.moreInfo{
+	top:-32px;
+	position:relative;
+	background-color: white;
+	padding-left: 20px;
+	padding-right: 20px;
+	color: blue;
+}
+.moreInfo:hover{
+	color: cornflowerblue;
+	cursor: pointer;
+}
+
+.moreForm {
+	display: none; 
+}
+/**
+ * 将注册按钮拉长
+ */
+#registerBtn {
+	width:200px;
+}
+/**
+ * 设置第三方登录的效果
+ */
+.otherLogin{
+	text-align: center;
+	padding-right: 50px;
+	padding-bottom: 30px;
+}
+.otherLogin a {
+	margin-left:20px;
+}
+.otherLogin p {
+	margin:0;
+}
+.otherLogin img{
+	width:120px;
+	height: 25px;
+	margin-top: 20px;
+	margin-bottom: 0px;
+}
+/**
+ * 设置版权信息居中
+ */
+.copyRight {
+	text-align: center;
+}
+/**
+ * 设置注册表单的标题居中显示
+ */
+.registerForm .formTitle{
+	text-align: center;		
+}
+/**
+ * 下面定义三种样式，用来显示页面上的检测提示
+ */
+.chkSuccess{
+	color:green;
+}
+
+.chkError{
+	color:red;
+}
+
+.chkWarning{
+	color:orange;
+}
+	
+/**
+ * 由于使用了响应式设计，下面要对不同屏幕大小下的样式进行分别设置，两种情况下相同的设置可以放在
+ * 上面的公共区域中
+ * 下面是屏幕宽度大于767px时的设置（767px和bootstr的响应式设计是对应的）
+ */
+@media only screen and (min-width:767px ) {
+	body{
+		background: -webkit-linear-gradient(blue, lightblue); /* Safari 5.1 - 6.0 */
+		background: -o-linear-gradient(blue, lightblue); /* Opera 11.1 - 12.0 */
+		background: -moz-linear-gradient(blue, lightblue); /* Firefox 3.6 - 15 */
+		background: linear-gradient(blue, lightblue); /* 标准的语法 */
+		/*这里的10px和"更多资料"的定位有关，火狐里面不加就显示有问题，在谷歌里面不加也没问题；后来发现给html加height为100%的样式可以解决该问题*/
+		/*padding-bottom: 7px;*/ 
+	}
+	.register{
+	    background-color: #fff;
+	    border-radius: 2px;
+	    margin:30px auto;
+	    width: 540px;
+	    padding-top: 20px;
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+	
+}
+
+/**
+ * 下面是屏幕宽度小于767px时的样式设置
+ */
+@media only screen and (max-width:767px ) {
+	body{
+		background: -webkit-linear-gradient(white, white); /* Safari 5.1 - 6.0 */
+		background: -o-linear-gradient(white, white); /* Opera 11.1 - 12.0 */
+		background: -moz-linear-gradient(white, white); /* Firefox 3.6 - 15 */
+		background: linear-gradient(white, white); /* 标准的语法 */
+	}
+	.register{
+	    background-color: #fff;
+	    border-radius: 2px;
+	    width: 100%;
+	}
+}

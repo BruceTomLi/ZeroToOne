@@ -1,0 +1,92 @@
+.loginFooter{
+	height: 70px;
+	text-align: center;
+	margin-top: 12px;
+}
+/**
+ * 设置版权信息居中
+ */
+.copyRight {
+	text-align: center;
+}
+/**
+ * 由于使用了响应式设计，下面要对不同屏幕大小下的样式进行分别设置，两种情况下相同的设置可以放在
+ * 上面的公共区域中
+ * 下面是屏幕宽度大于767px时的设置（767px和bootstr的响应式设计是对应的）
+ */
+@media only screen and (min-width:768px ) {
+	body {
+		background: -webkit-linear-gradient(blue, lightblue); /* Safari 5.1 - 6.0 */
+		background: -o-linear-gradient(blue, lightblue); /* Opera 11.1 - 12.0 */
+		background: -moz-linear-gradient(blue, lightblue); /* Firefox 3.6 - 15 */
+		background: linear-gradient(blue, lightblue); /* 标准的语法 */
+		/*padding-bottom: 19px;*/ 
+	}
+	.login{
+	    background-color: #fff;
+	    border-radius: 2px;    
+	    margin:30px auto;
+	    max-width: 500px;
+	    padding-top: 20px;
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+	.loginContent{
+		height: 426px;	
+	}
+	.form{
+		padding-top: 30px;
+		padding-left: 50px;
+	}
+	
+	.otherLogin{
+		text-align: center;
+		padding-right: 50px;
+	}
+	.otherLogin img{
+		width:150px;
+		height: 30px;
+		margin-top: 20px;
+		margin-bottom: 0px;
+	}
+}
+
+/**
+ * 下面是屏幕宽度小于767px时的样式设置
+ */
+@media only screen and (max-width:767px ) {
+	body {
+		background: -webkit-linear-gradient(white, white); /* Safari 5.1 - 6.0 */
+		background: -o-linear-gradient(white, white); /* Opera 11.1 - 12.0 */
+		background: -moz-linear-gradient(white, white); /* Firefox 3.6 - 15 */
+		background: linear-gradient(white, white); /* 标准的语法 */
+	}
+	.login{
+	    background-color: #fff;
+	    border-radius: none;    
+	    width: 100%;
+	}
+	
+	.form{
+		padding-top: 0;
+		padding-bottom: 0;
+		padding-left: 30px;
+		padding-right:30px;
+	}
+	
+	.loginContent{
+		height: auto;	
+		padding-top:30px;
+	}
+	
+	.otherLogin{
+		text-align: center;
+	}
+	.otherLogin img{
+		width:150px;
+		height: 30px;
+		margin-top: 0px;
+		margin-bottom: 10px;
+	}
+}
+

@@ -1,0 +1,16 @@
+.queryDiv,.createDiv,.editDiv{
+	background-color: #FFFFFF;
+}
+
+.mainContent{
+	padding:20px;
+}
+
+.createDiv,.editDiv{
+	display: none;
+}
+
+#inputRoleDescription,#newRoleDescription{
+	width:300px;
+	height: 80px;
+}

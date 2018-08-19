@@ -1,0 +1,25 @@
+body{
+	background-color: #FFFFFF;
+}
+
+.queryDiv{
+	background-color: #FFFFFF;
+	text-align: center;
+}
+
+.mainContent{
+	padding: 20px;
+}
+
+#personalResume>p>img{
+	max-width: 300px;
+	max-height: 300px;
+}
+/*为了兼顾很小屏幕的手机*/
+@media only screen and (max-width: 320px) {
+	/*用户图片显示尺寸*/
+	#personalResume>p>img{
+		max-width: 200px;
+		max-height: 200px;
+	}
+}

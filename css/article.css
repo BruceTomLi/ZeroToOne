@@ -1,0 +1,17 @@
+#articleContent{	
+	background-color: #FFFFFF;
+	padding: 30px;
+	font-size: 18px;
+	line-height: 24px;
+}
+
+#articleContent h3{
+	text-align: center;
+}
+
+#articleContent span{
+	display:block;
+	text-align:center;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}

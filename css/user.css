@@ -1,0 +1,56 @@
+.queryDiv,.detailsDiv,.editDiv{
+	background-color: #FFFFFF;
+}
+
+.detailsDiv{
+	display: none;
+}
+
+.mainContent{
+	padding: 20px;	
+}
+
+.manageMenu{
+	height: 40px;
+}
+
+.handleMultiDiv{
+	padding-top: 10px;
+}
+
+.tableDiv{
+	padding-top: 40px;
+}
+
+.selectAllOrNotDiv{
+	margin: 5px;
+}
+
+.enableOrDisableDiv button{
+	margin: 5px;
+}
+
+
+.handleMultiDiv,.enableOrDisableDiv,.forSelectMulti,.advanceSearchDiv,.editDiv{
+	display: none;
+}
+
+.pagination{
+	text-align: center;
+}
+
+
+#editUserDiv p{
+	padding:5px;
+}
+
+@media only screen and (max-width:767px ) {
+	.tableDiv{
+		width:100%;
+		overflow:auto;
+	}
+	
+	.detailsInfo{
+		display: none;
+	}
+}

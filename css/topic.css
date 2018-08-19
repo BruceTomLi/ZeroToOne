@@ -1,0 +1,97 @@
+body{
+	background-color: #EEEEEE;
+}
+
+.contentDiv,.searchResultDiv{
+	background-color: #FFFFFF;
+}
+
+.mainContent{
+	padding: 20px;
+}
+
+
+.right-nav{
+	padding: 20px;
+	background-color: #FFFFFF;
+	text-align: initial;
+}
+
+
+.navTable{
+	margin-bottom: 0;
+}
+
+.right-nav-item{
+	padding-bottom: 5px;
+}
+
+h3{
+	font-weight: normal;
+}
+
+.nav li a:hover{
+	border-bottom: solid #005580 1px;
+}
+
+/*下面去除Bootstrap默认渲染的菜单样式，是通过浏览器中调试得到的*/
+.navbar-inner{
+	background-color: #FFFFFF;
+	border: none;
+	background-image: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	border-radius: 0!important;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+
+.topicTable{
+	width:100%;
+	padding:10px 20px;
+}
+
+.topicTable td img{
+	width:50px;
+	height: 50px;
+}
+
+
+.navTable img{
+	width:40px;
+	height: 40px;
+}
+
+.label{
+	padding:3px 6px;
+}
+
+
+.footerP{
+	text-align: center;
+	line-height: 20px;
+	padding-top: 30px;
+	padding-bottom: 30px;	
+}
+
+.pagination{
+	text-align: center;
+}
+
+/**
+ * 下面是屏幕宽度小于767px时的样式设置
+ */
+@media only screen and (max-width:767px ) {
+	.topicTable td img{
+		width: auto;
+		height: auto;
+		min-width:20px;
+		min-height: 20px;
+	}
+	
+	.btn-group{
+		margin-top:3px;
+		margin-bottom: 3px;
+	}
+}

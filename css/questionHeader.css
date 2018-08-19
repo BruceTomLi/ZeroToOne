@@ -1,0 +1,37 @@
+body{
+	background-color: #EEEEEE;
+}
+
+#questionHeaderDetails{
+	background-color: #FFFFFF;
+}
+
+#menuBtn span{
+	padding: 10px;
+	line-height: 30px;
+}
+
+#menuBtn .btn{
+	margin: 5px;
+}
+
+.questionMenuUl{
+	display: inline-block;
+}
+
+.questionMenuUl li a:hover{
+	border-bottom: solid #005580 1px;
+}
+
+
+/*下面去除Bootstrap默认渲染的菜单样式，是通过浏览器中调试得到的*/
+.defaultBootstrapMenu.navbar-inner{
+	background-color: #FFFFFF;
+	border: none;
+	background-image: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	border-radius: 0!important;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}

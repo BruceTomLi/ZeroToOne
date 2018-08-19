@@ -1,0 +1,30 @@
+/*h1的文章字体太大,这里改小*/
+.artilceTitle{
+	font-size: 2em!important;
+	font-weight: normal!important;
+	line-height: 1.2em!important;
+}
+
+.hero-unit{
+	padding: 30px!important;
+	background-color: #FFFFFF;
+	border-radius: 0!important;
+}
+
+.hero-unit h1{
+	text-align: center;
+}
+
+.hero-unit span{
+	display: block;
+	text-align: center;	
+}
+
+.pagination{
+	text-align: center;
+}
+
+.headContent{
+	background-color: #FFFFFF;
+}
+

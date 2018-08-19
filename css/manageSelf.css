@@ -1,0 +1,108 @@
+.queryDiv,.editDiv,.createDiv,.detailsDiv{
+	background-color: #FFFFFF;
+}
+
+.editDiv,.createDiv,.detailsDiv{
+	display: none;
+}
+
+.mainContent{
+	padding: 20px;
+}
+
+legend{
+	text-align: center;
+}
+
+.pagination{
+	text-align: center;
+}
+
+.articleDetail ul{
+	list-style: none;
+}
+/*下面为SelfFollow设置*/
+.questionDetailsDiv{
+	background-color: #FFFFFF;
+}
+.questionDetailsDiv{
+	display: none;
+}
+
+.dropdown-menu a {
+  cursor: pointer;
+}
+
+/*修改密码的区域默认隐藏*/
+#changePwdDiv,#changeHeadingDiv{
+	display:none;
+}
+
+/*用户角色的显示*/
+#inputUserRole{
+	padding-top:5px;
+}
+
+/*用户图片显示尺寸，已经可以在普通大小屏幕的手机上和pc上正常显示了*/
+#userHeadingImg{
+	max-width: 300px;
+	max-height: 300px;
+}
+
+/*控制我的粉丝表中用户图片的大小*/
+#fansTable img{
+	max-width: 50px;
+	max-height: 50px;
+}
+
+/*为了兼顾很小屏幕的手机*/
+@media only screen and (max-width: 320px) {
+	/*用户图片显示尺寸*/
+	#userHeadingImg{
+		max-width: 200px;
+		max-height: 200px;
+	}
+}
+
+/* this CSS is not part of the widget, it is here just as an example of the demo page styling.... Don't copy this one, roll your own. One
+ * of the key things about the widget is that it allows you to do your own styling!
+ */
+
+#editor {
+	max-height: 250px;
+	height: 250px;
+	background-color: white;
+	border-collapse: separate; 
+	border: 1px solid rgb(204, 204, 204); 
+	padding: 4px; 
+	box-sizing: content-box; 
+	-webkit-box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset; 
+	box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset;
+	border-top-right-radius: 3px; border-bottom-right-radius: 3px;
+	border-bottom-left-radius: 3px; border-top-left-radius: 3px;
+	overflow: scroll;
+	outline: none;
+}
+#voiceBtn {
+  width: 20px;
+  color: transparent;
+  background-color: transparent;
+  transform: scale(2.0, 2.0);
+  -webkit-transform: scale(2.0, 2.0);
+  -moz-transform: scale(2.0, 2.0);
+  border: transparent;
+  cursor: pointer;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+div[data-role="editor-toolbar"] {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#pictureBtn,#pictureBtn>a{
+	cursor: default;
+}

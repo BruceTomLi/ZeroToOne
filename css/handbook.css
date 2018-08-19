@@ -1,0 +1,12 @@
+#articleContent{	
+	background-color: #FFFFFF;
+	padding: 30px;
+	font-size: 18px;
+	line-height: 24px;
+}
+
+hr.contentHr{
+	border-bottom: 1px solid #DA6426;
+	margin-bottom: 60px;
+	margin-top: 60px; 
+}
