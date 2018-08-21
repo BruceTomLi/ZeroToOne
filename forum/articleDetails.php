@@ -10,10 +10,10 @@
 	//获取文章相关的问题和话题信息
 	$articleController=new ArticleController();
 	$questionInfo=$articleController->getQuestionOfArticle($articleTitle);
-	$questionCount=$questionInfo[0]["questionCount"];
+	$questionCount=$questionInfo[0]["questionCount"]??0;
 	$questionId=$questionInfo[0]["questionId"]??"";
 	$topicInfo=$articleController->getTopicOfArticle($articleTitle);
-	$topicCount=$topicInfo[0]["topicCount"];
+	$topicCount=$topicInfo[0]["topicCount"]??0;
 	$topicId=$topicInfo[0]["topicId"]??"";
 ?>
 <!DOCTYPE html>
