@@ -29,7 +29,8 @@
 	 //判定本地文件和站点的URL地址，允许在不同的服务器环境中进行开发
 	 if($local){
 	 	//在本地的时候允许进行调试
-	 	$debug=true;
+	 	$debug=true;		
+		$isPhpUnit=true;
 		
 		//定义持久化数据
 		define('BASE_URI', 'J:\wamp\www\ZeroToOne');

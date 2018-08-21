@@ -241,7 +241,10 @@
 		function logout(){					
 			if(isset($_SESSION['username'])){
 				//这里使用@是因为在session_start()函数前面如果有其他输出，就会报警告，主要是为phpunit设置的
-				@session_start();
+				global $isPhpUnit;
+				if($isPhpUnit==true){
+					@session_start();
+				}				
 				session_destroy();
 				return true;
 			}
