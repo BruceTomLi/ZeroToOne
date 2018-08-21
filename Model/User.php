@@ -16,10 +16,12 @@
 		// private $city;
 		// private $oneWord;
 		// private $heading;
+		private $isPHPUnit;
 				
-		function __construct(){
+		function __construct($isPHPUnit=false){
 			//在构造函数中设置时间格式，避免在其他地方重复设置
 			date_default_timezone_set('PRC'); 
+			$this->isPHPUnit=$isPHPUnit;
 		}
 		/**
 		 * 下面的注册方法是填写完整信息之后进行注册
@@ -241,10 +243,10 @@
 		function logout(){					
 			if(isset($_SESSION['username'])){
 				//这里使用@是因为在session_start()函数前面如果有其他输出，就会报警告，主要是为phpunit设置的
-				global $isPhpUnit;
-				if($isPhpUnit==true){
+				//默认isPHPUnit是false，防止生产环境中一直报session已经start并报错发邮件
+				if($this->isPHPUnit==true){
 					@session_start();
-				}				
+				}
 				session_destroy();
 				return true;
 			}

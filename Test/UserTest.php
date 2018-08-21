@@ -14,7 +14,7 @@
 		 * 和用户权限的action进行检查
 		 */
 		function setUp(){
-			$this->user=new User();
+			$this->user=new User(true);
 			$username=UserName;
 			$password=Password;
 			$result=$this->user->login($password, $username);

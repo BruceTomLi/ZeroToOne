@@ -30,7 +30,6 @@
 	 if($local){
 	 	//在本地的时候允许进行调试
 	 	$debug=true;		
-		$isPhpUnit=true;
 		
 		//定义持久化数据
 		define('BASE_URI', 'J:\wamp\www\ZeroToOne');
@@ -87,8 +86,10 @@
 		}
 	  }
 	  
-	  //使用错误信息处理函数为自定义的函数；使用phpunit测试程序的时候先注释下面这行，不然会一直报错
-	  set_error_handler('my_error_handler');
+	  //使用错误信息处理函数为自定义的函数；为了使用phpunit测试程序，没有开启debug的时候才设置，否则会在phpunit中显示很多信息
+	  if(!isset($debug) || $debug==false){
+	  	set_error_handler('my_error_handler');
+	  }	  
 	  #***********错误管理结束*********#
 	  
 ?>
