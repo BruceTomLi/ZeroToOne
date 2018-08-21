@@ -15,7 +15,6 @@
 	$_SESSION['token']=$user->createToken()??"thisIsToken";
 	$token=$_SESSION['token'];
 	
-	
 ?>
 <link href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="../css/header.css">

@@ -6,8 +6,8 @@
 	margin-top: 20px;
 }
 .moreInfo{
+	position: relative;
 	top:-32px;
-	position:relative;
 	background-color: white;
 	padding-left: 20px;
 	padding-right: 20px;

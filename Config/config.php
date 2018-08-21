@@ -35,13 +35,13 @@
 		define('BASE_URI', 'J:\wamp\www\ZeroToOne');
 		define('BASE_URL', 'http://localhost/ZeroToOne/');
 		//define('DB','J:\wamp\www\deepLearnPHP\DevelopeWebProject\includes\mysql.inc.php');
-		require_once(__DIR__."/../Config/dbTest.php");
+		require_once(__DIR__."/../Config/dbTest.php");//测试环境的数据库配置保存在项目中就可以了
 	 }
 	 else{
 	 	define('BASE_URI', '/var/www/ZeroToOne');
 		define('BASE_URL', 'http://106.12.110.95/');
 		//define('DB','J:\wamp\www\deepLearnPHP\DevelopeWebProject\includes\mysql.inc.php');
-		require_once(__DIR__."/../Config/dbProduct.php");
+		require_once("/var/website/ZeroToOne/Config/dbProduct.php");//生产环境的数据库配置要保存在项目文件之外才安全
 	 }
 	 
 	 /*

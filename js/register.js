@@ -2,23 +2,26 @@
 $(function(){
 	var isShow = false;//没显示	
 	
+	setBackgroundHeight();
+	
+	window.onresize=function(){
+	    setBackgroundHeight();
+	};
+	
 	/**
-	 * 单击“更多资料”时显示或者隐藏
+	 * 单击更多信息
 	 */
-	$('.moreInfo').on('click',function(){
+	$(".moreInfo").on("click",function(){
 		$('.moreForm').toggle();
 		if(!isShow) {
 			$('.moreInfo').html('收起');
-			var height=$(window).height()+100;
-			$("html").css("height",height+"px");
 		}else {
 			$('.moreInfo').html('更多资料');
-			var height=$(window).height();
-			$("html").css("height",height+"px");
 		}
 		isShow = !isShow;
-		
-	});	
+		setBackgroundHeight();
+	});
+	
 	/**
 	 * 单击注册按钮时注册
 	 */
@@ -77,6 +80,7 @@ $(function(){
 	
 });
 
+
 /**
  * 显示用户协议信息
  */
@@ -130,7 +134,7 @@ function showValcode(){
 			num+=String.fromCharCode(Math.ceil(Math.random()*25)+97);//随机大写字母
 		}
 	}
-	$('#valcodeId').attr("src","classes/valcode.php?num="+num);
+	$('#valcodeId').attr("src","classes/Valcode.php?num="+num);
 	$('#valcodeValue').val(num);
 }
 /**

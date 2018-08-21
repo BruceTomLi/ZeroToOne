@@ -5,11 +5,12 @@
 		<title>系统注册</title>
 		<link rel="Shortcut Icon" href="img/logo_ico.gif" />
 		<meta name="viewport" content="width=device-width,initial-scale=1.0">
-		<link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-		<link href="./bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
+		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+		<link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
 		<link href="css/register.css" rel="stylesheet" type="text/css">
 		<script src="js/jquery-1.9.1.js"></script>
-		<script src="./bootstrap/js/bootstrap.min.js"></script>
+		<script src="bootstrap/js/bootstrap.min.js"></script>
+		<script src="js/getWindowHeight.js"></script>
 		<script src="js/register.js"></script>
 	</head>
 	<body style="height: 100%">

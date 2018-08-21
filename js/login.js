@@ -2,7 +2,15 @@ $(function(){
 	$('#loginBtn').on("click",function(){
 		login();
 	});
+	
+	setBackgroundHeight();
+	
+	window.onresize=function(){
+	    setBackgroundHeight();
+	};
+	
 });
+
 
 function login(){
 	var password=$('#inputPassword').val();
