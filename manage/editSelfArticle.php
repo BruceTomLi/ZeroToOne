@@ -1,7 +1,6 @@
 <?php
 	//获取问题页数，用于分页显示
-	$page=$_REQUEST['page']??1;
-	$keyword=$_REQUEST['keyword']??"";
+	$articleId=$_REQUEST['articleId']??"";
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,142 +20,49 @@
 		<link href="../css/manageSelf.css" rel="stylesheet" type="text/css">
 		<script src="../bootstrap-wysiwyg.js"></script>
 	    <script src="../js/loadInitEditor.js"></script>
-	    <script src="../js/MyPager.js"></script>
-	    <script src="../js/SelfArticle.js"></script>
+	    <script src="../js/editSelfArticle.js"></script>
 	</head>
 	<body>
 		<!--存放页数信息，以便于分页显示-->
 		<div>
-			<input type="hidden" id="pageHidden" value="<?php echo $page; ?>"/>
-			<input type="hidden" id="keywordHidden" value="<?php echo $keyword; ?>"/>
+			<input type="hidden" id="articleIdHidden" value="<?php echo $articleId; ?>"/>
 		</div>
 		<div class="container-fluid">
 			<header id="manageHeader">
 				<?php include(__DIR__."/../View/manageHeader.php"); ?>
 			</header>
-			<!--下面是页面主体部分-->
-			<div class="row-fluid queryDiv">
-				<div class="span12 mainContent">
-					<div class="selfArticleManageMenu">	
-						<div class="form-search input-append pull-left">
-							<input class="input-medium" id="keyword" type="text" placeholder="文章标题/标签/内容" /> 
-							<button type="submit" class="btn" onclick="searchArticles()">查找</button>
-						</div>
-						
-						<ul class="nav nav-tabs pull-right">
-							<li>
-								<button id="createBtn" class="btn-link">新建文章</a>
-							</li>
-						</ul>
-					</div>
-					<div class="selfArticleTableDiv">
-						<table class="table" id="selfArticleTable">		
-						<thead>
-							<tr>								
-								<th>标题</th>
-								<th>作者</th>
-								<th>发布日期</th>
-								<th>发布者</th>
-								<th>文章大小</th>
-								<th>文章标签</th>
-								<th>发布</th>	
-								<th>删除</th>	
-								<th>修改</th>		
-							</tr>							
-						</thead>
-						<tbody>
-							<tr>
-								<td>
-									穷且益坚，不坠青云之志
-								</td>
-								<td>
-									山外山
-								</td>
-								<td>
-									2018/7/9
-								</td>
-								<td>
-									山外山
-								</td>
-								<td>
-									894KB
-								</td>
-								<td>
-									贫穷，富贵，道德，正义，诱惑，犯罪
-								</td>				
-								<td>
-									<button class="btn btn-success">发布文章</button>
-								</td>			
-								<td>
-									<button class="btn btn-danger">删除</button>
-								</td>
-								<td>
-									<a href="#" >修改文章</a>
-								</td>
-							</tr>							
-						</tbody>
-					</table>
-					</div>
-					<div class="pagination" id="paginationDiv">
-						<ul>
-							<li>
-								<a href="#">上一页</a>
-							</li>
-							<li>
-								<a href="#">1</a>
-							</li>
-							<li>
-								<a href="#">2</a>
-							</li>
-							<li>
-								<a href="#">3</a>
-							</li>
-							<li>
-								<a href="#">4</a>
-							</li>
-							<li>
-								<a href="#">5</a>
-							</li>
-							<li>
-								<a href="#">下一页</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-				
-			</div>			
 			
-			<!--下面是创建文章的html代码-->
-			<div class="row-fluid createDiv">
+			<!--下面是修改文章的html代码-->
+			<div class="row-fluid editArticleDiv">
 				<div class="span12 mainContent">
 					<div class="row-fluid ">
-						<div class="form-horizontal registerForm">
+						<div class="form-horizontal changeForm">
 							<div class="formTitle">
-								<legend>写文章</legend>
-								<button class="btn-link pull-right listBtn">返回文章列表</button>
+								<legend>修改文章</legend>
+								<button class="btn-link pull-right listBtn"  onclick="javascript:history.back(-1);">返回文章列表</button>
 							</div>
 						  	<div class="control-group">
-						  		<label class="control-label" for="inputTitle">标题</label>
+						  		<label class="control-label" for="changeTitle">标题</label>
 						    	<div class="controls">
-							      	<input type="text" id="inputTitle" placeholder="最多50字">
+							      	<input type="text" id="changeTitle" placeholder="最多50字">
 							    </div>
 						  	</div>
 						  	<div class="control-group">
-						  		<label class="control-label" for="inputAuthor">作者</label>
+						  		<label class="control-label" for="changeAuthor">作者</label>
 						    	<div class="controls">
-						      		<input type="text" id="inputAuthor" placeholder="最多25字">
+						      		<input type="text" id="changeAuthor" placeholder="最多25字">
 						    	</div>
 						  	</div>
 							<div class="control-group">
-								<label class="control-label" for="inputLabel">文章标签</label>
+								<label class="control-label" for="changeLabel">文章标签</label>
 							    <div class="controls">
-							    	<input type="text" id="inputLabel" placeholder="最多50字">
+							    	<input type="text" id="changeLabel" placeholder="最多50字">
 							    </div>
 							</div>
 							
 							<!--下面是关于超文本编辑器的部分-->
 							<div class="control-group">
-								<label class="control-label" for="inputCpntent">正文内容(少于1万字)</label>
+								<label class="control-label" for="changeCpntent">正文内容(少于1万字)</label>
 								<div class="controls">
 									<div class="editorDiv">
 										<div id="alerts"></div>
@@ -229,16 +135,15 @@
 							</div>
 							<div class="control-group">
 							    <div class="controls">
-							      	<button type="submit" class="btn btn-info" onclick="writeArticle()" id="createArticleBtn">创建文章</button>
-							      	<button type="submit" class="btn btn-warning" id="cancleBtn">取消</button>
+							      	<button type="submit" class="btn btn-info" onclick="changeArticle()" id="changeArticleBtn">提交修改</button>
+							      	<button type="submit" class="btn btn-warning"  onclick="javascript:history.back(-1);">取消</button>
 							    </div>
 							</div>
 							<hr>
 						</div>						
 					</div>
 				</div>
-			</div>	
-			
+			</div>
 			
 			<footer id="manageFooter">
 				<?php include(__DIR__."/../View/manageFooter.php"); ?>

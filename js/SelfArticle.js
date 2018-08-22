@@ -115,27 +115,34 @@ function loadSelfArticles(){
 		{action:"loadSelfArticles"},
 		function(data){
 			var result=$.trim(data);
-			result=$.parseJSON(result);
-			var articlesHtml="";
-			result.articles.forEach(function(value,index){
-				articlesHtml+="<tr>";
-				articlesHtml+="<td><a target='_blank' href='../forum/articleDetails.php?articleId="+value.articleId+"'>"+value.title+"</a></td>";
-				articlesHtml+="<td>"+value.author+"</td>";
-				var publishDate=(value.publishDate==""||value.publishDate==null)?"未发布":value.publishDate;
-				articlesHtml+="<td>"+publishDate+"</td>";
-				articlesHtml+="<td>"+value.publisherName+"</td>";
-				articlesHtml+="<td>"+value.size+" bytes</td>";
-				articlesHtml+="<td>"+value.label+"</td>";
-				if(value.publishDate=="" || value.publishDate==null){
-					articlesHtml+="<td><button class='btn btn-success' onclick='publishSelfArticle(this)' value='"+value.articleId+"'>发布文章</button></td>";
-				}
-				else{
-					articlesHtml+="<td><button class='btn btn-warning' onclick='cancelPublishSelfArticle(this)' value='"+value.articleId+"'>取消发布</button></td>";
-				}
-				articlesHtml+="<td><button class='btn btn-danger' onclick='deleteSelfArticle(this)' value='"+value.articleId+"'>删除</button></td>";
-				articlesHtml+="</tr>";
-			});
-			$("#selfArticleTable tbody").html(articlesHtml);
+			var pattern=new RegExp("\{([^\{]+)[\s\S]*(\})$","gi");//使用正则表达式检测结果是否为json格式，以{开头，以}结尾，中间任意字符
+			if(pattern.test(result)){
+				result=$.parseJSON(result);
+				var articlesHtml="";
+				result.articles.forEach(function(value,index){
+					articlesHtml+="<tr>";
+					articlesHtml+="<td><a target='_blank' href='../forum/articleDetails.php?articleId="+value.articleId+"'>"+value.title+"</a></td>";
+					articlesHtml+="<td>"+value.author+"</td>";
+					var publishDate=(value.publishDate==""||value.publishDate==null)?"未发布":value.publishDate;
+					articlesHtml+="<td>"+publishDate+"</td>";
+					articlesHtml+="<td>"+value.publisherName+"</td>";
+					articlesHtml+="<td>"+value.size+" bytes</td>";
+					articlesHtml+="<td>"+value.label+"</td>";
+					if(value.publishDate=="" || value.publishDate==null){
+						articlesHtml+="<td><button class='btn btn-success' onclick='publishSelfArticle(this)' value='"+value.articleId+"'>发布文章</button></td>";
+					}
+					else{
+						articlesHtml+="<td><button class='btn btn-warning' onclick='cancelPublishSelfArticle(this)' value='"+value.articleId+"'>取消发布</button></td>";
+					}
+					articlesHtml+="<td><button class='btn btn-danger' onclick='deleteSelfArticle(this)' value='"+value.articleId+"'>删除</button></td>";
+					articlesHtml+="</tr>";
+				});
+				$("#selfArticleTable tbody").html(articlesHtml);
+			}else{
+				result=(decodeURI(result));
+				var reg=/\"/g;
+				alert(result.replace(reg,''));
+			}
 		}
 	);
 }
@@ -160,54 +167,42 @@ function queryArticlesByKeyword(){
 		{action:"queryArticlesByKeyword",keyword:keyword,page:page},
 		function(data){
 			var result=$.trim(data);
-			result=$.parseJSON(result);
-			var articlesHtml="";
-			result.articles.forEach(function(value,index){
-				articlesHtml+="<tr>";
-				articlesHtml+="<td><a target='_blank' href='../forum/articleDetails.php?articleId="+value.articleId+"'>"+value.title+"</a></td>";
-				articlesHtml+="<td>"+value.author+"</td>";
-				var publishDate=(value.publishDate==""||value.publishDate==null)?"未发布":value.publishDate;
-				articlesHtml+="<td>"+publishDate+"</td>";
-				articlesHtml+="<td>"+value.publisherName+"</td>";
-				articlesHtml+="<td>"+value.size+" bytes</td>";
-				articlesHtml+="<td>"+value.label+"</td>";
-				if(value.publishDate=="" || value.publishDate==null){
-					articlesHtml+="<td><button class='btn btn-success' onclick='publishSelfArticle(this)' value='"+value.articleId+"'>发布文章</button></td>";
-				}
-				else{
-					articlesHtml+="<td><button class='btn btn-warning' onclick='cancelPublishSelfArticle(this)' value='"+value.articleId+"'>取消发布</button></td>";
-				}
-				articlesHtml+="<td><button class='btn btn-danger' onclick='deleteSelfArticle(this)' value='"+value.articleId+"'>删除</button></td>";
-				articlesHtml+="</tr>";
-			});
-			$("#selfArticleTable tbody").html(articlesHtml);
-			var paras=(keyword=="")?"":("&keyword="+keyword);//如果关键字为空，就让参数为空
-			writePager(result,page,"selfArticle.php",paras);
+			var pattern=new RegExp("\{([^\{]+)[\s\S]*(\})$","gi");//使用正则表达式检测结果是否为json格式，以{开头，以}结尾，中间任意字符
+			if(pattern.test(result)){
+				result=$.parseJSON(result);
+				var articlesHtml="";
+				result.articles.forEach(function(value,index){
+					articlesHtml+="<tr>";
+					articlesHtml+="<td><a target='_blank' href='../forum/articleDetails.php?articleId="+value.articleId+"'>"+value.title+"</a></td>";
+					articlesHtml+="<td>"+value.author+"</td>";
+					var publishDate=(value.publishDate==""||value.publishDate==null)?"未发布":value.publishDate;
+					articlesHtml+="<td>"+publishDate+"</td>";
+					articlesHtml+="<td>"+value.publisherName+"</td>";
+					articlesHtml+="<td>"+value.size+" bytes</td>";
+					articlesHtml+="<td>"+value.label+"</td>";
+					if(value.publishDate=="" || value.publishDate==null){
+						articlesHtml+="<td><button class='btn btn-success' onclick='publishSelfArticle(this)' value='"+value.articleId+"'>发布文章</button></td>";
+					}
+					else{
+						articlesHtml+="<td><button class='btn btn-warning' onclick='cancelPublishSelfArticle(this)' value='"+value.articleId+"'>取消发布</button></td>";
+					}
+					articlesHtml+="<td><button class='btn btn-danger' onclick='deleteSelfArticle(this)' value='"+value.articleId+"'>删除</button></td>";
+					articlesHtml+="<td><a href='editSelfArticle.php?articleId="+value.articleId+"'>修改</a></td>";
+					articlesHtml+="</tr>";
+				});
+				$("#selfArticleTable tbody").html(articlesHtml);
+				var paras=(keyword=="")?"":("&keyword="+keyword);//如果关键字为空，就让参数为空
+				writePager(result,page,"selfArticle.php",paras);
+			}else{
+				result=(decodeURI(result));
+				var reg=/\"/g;
+				alert(result.replace(reg,''));
+			}
 		}
 	);
 }
 
-/**
- * 加载一篇文章的详细信息
- */
-function loadArticleDetails(obj){
-	var articleId=$(obj).attr("value");
-	$.get(
-		"../Controller/SelfArticleController.php",
-		{action:"loadArticleDetails",articleId:articleId},
-		function(data){
-			var result=$.trim(data);
-			result=$.parseJSON(result);
-			result.articleDetails.forEach(function(value,index){
-				$("#detailsTitle").text(value.title);
-				$("#detailsLabel>span").text(value.label);
-				$("#detailsAuthor>span").text(value.author);
-				$("#detailsContent").html(value.content);
-			});
-			showDetails();
-		}
-	);
-}
+
 
 /**
  * 删除作者自己写的文章
@@ -220,18 +215,25 @@ function deleteSelfArticle(obj){
 			{action:"deleteSelfArticle",articleId:articleId},
 			function(data){
 				var result=$.trim(data);
-				result=$.parseJSON(result);
-				if(result.deleteArticleRow==1){
-					//loadSelfArticles();
-					queryArticlesByKeyword();
-					showList();
-					alert("成功删除了文章");					
-				}
-				else if(result.deleteArticleRow==0){
-					alert("未能删除文章");
-				}
-				else{
-					alert(result.deleteArticleRow);
+				var pattern=new RegExp("\{([^\{]+)[\s\S]*(\})$","gi");//使用正则表达式检测结果是否为json格式，以{开头，以}结尾，中间任意字符
+				if(pattern.test(result)){
+					result=$.parseJSON(result);
+					if(result.deleteArticleRow==1){
+						//loadSelfArticles();
+						queryArticlesByKeyword();
+						showList();
+						alert("成功删除了文章");					
+					}
+					else if(result.deleteArticleRow==0){
+						alert("未能删除文章");
+					}
+					else{
+						alert(result.deleteArticleRow);
+					}
+				}else{
+					result=(decodeURI(result));
+					var reg=/\"/g;
+					alert(result.replace(reg,''));
 				}
 			}
 		);
@@ -248,15 +250,22 @@ function publishSelfArticle(obj){
 		{action:"publishSelfArticle",articleId:articleId},
 		function(data){
 			var result=$.trim(data);
-			result=$.parseJSON(result);
-			if(result.publishArticleRow==1){
-				//loadSelfArticles();
-				queryArticlesByKeyword();
-				showList();
-				alert("发布文章成功");				
-			}
-			else{
-				alert(result.publishArticleRow);
+			var pattern=new RegExp("\{([^\{]+)[\s\S]*(\})$","gi");//使用正则表达式检测结果是否为json格式，以{开头，以}结尾，中间任意字符
+			if(pattern.test(result)){
+				result=$.parseJSON(result);
+				if(result.publishArticleRow==1){
+					//loadSelfArticles();
+					queryArticlesByKeyword();
+					showList();
+					alert("发布文章成功");				
+				}
+				else{
+					alert(result.publishArticleRow);
+				}
+			}else{
+				result=(decodeURI(result));
+				var reg=/\"/g;
+				alert(result.replace(reg,''));
 			}
 		}
 	);
@@ -272,15 +281,22 @@ function cancelPublishSelfArticle(obj){
 		{action:"cancelPublishSelfArticle",articleId:articleId},
 		function(data){
 			var result=$.trim(data);
-			result=$.parseJSON(result);
-			if(result.cancelPublishArticleRow==1){
-				//loadSelfArticles();
-				queryArticlesByKeyword();
-				showList();
-				alert("取消发布文章成功");				
-			}
-			else{
-				alert(result.cancelPublishArticleRow);
+			var pattern=new RegExp("\{([^\{]+)[\s\S]*(\})$","gi");//使用正则表达式检测结果是否为json格式，以{开头，以}结尾，中间任意字符
+			if(pattern.test(result)){
+				result=$.parseJSON(result);
+				if(result.cancelPublishArticleRow==1){
+					//loadSelfArticles();
+					queryArticlesByKeyword();
+					showList();
+					alert("取消发布文章成功");				
+				}
+				else{
+					alert(result.cancelPublishArticleRow);
+				}
+			}else{
+				result=(decodeURI(result));
+				var reg=/\"/g;
+				alert(result.replace(reg,''));
 			}
 		}
 	);

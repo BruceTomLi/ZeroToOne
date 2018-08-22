@@ -1,7 +1,8 @@
 <?php
 	require_once(__DIR__.'/../Model/User.php');
 	require_once(__DIR__.'/../Model/Author.php');
-	class SelfArticleController{
+	require_once("BaseController.php");
+	class SelfArticleController extends BaseController{
 		private $author;
 		
 		public function __construct(){
@@ -15,25 +16,49 @@
 			$token=$_REQUEST['token']??"";
 			if($token==$_SESSION['token']){
 				//传入的内容过多就截断
-				$title=substr(trim($_REQUEST['title']??""),0,50);
-				$author=substr(trim($_REQUEST['author']??""),0,25);
-				$label=substr(trim($_REQUEST['label']??""),0,50);
+				$title=substr(trim($_REQUEST['title']??""),0,80);
+				$author=substr(trim($_REQUEST['author']??""),0,35);
+				$label=substr(trim($_REQUEST['label']??""),0,80);
 				$content=$_REQUEST['content']??"";
 				$size=strlen($content);
 				if($size<20000){
 					$infoArray=array("title"=>$title,"author"=>$author,"label"=>$label,"content"=>$content,"size"=>$size);
 					
 					$writeArticleCount=$this->author->writeArticle($infoArray);
-					if(is_numeric($writeArticleCount)){
-						$writeArticleCount=array("writeArticleCount"=>$writeArticleCount);
-					}			
-					return json_encode($writeArticleCount);
+					return $this->returnRusult($writeArticleCount,"writeArticleCount");
 				}else{
-					return json_encode(urlencode("文章内容长度超过上限（最多1W字）"));
+					return $this->returnRusult("文章内容长度超过上限（最多1W字）");
 				}
 				
 			}else{
-				return json_encode(urlencode("该请求被认为是骇客CSRF攻击"));
+				return $this->returnRusult("该请求被认为是骇客CSRF攻击");
+			}
+		}
+		
+		/**
+		 * 保存修改后的文章
+		 */
+		public function saveEditArticle(){
+			$token=$_REQUEST['token']??"";
+			if($token==$_SESSION['token']){
+				$articleId=$_REQUEST['articleId']??"";
+				//传入的内容过多就截断
+				$title=substr(trim($_REQUEST['title']??""),0,80);
+				$author=substr(trim($_REQUEST['author']??""),0,35);
+				$label=substr(trim($_REQUEST['label']??""),0,80);
+				$content=$_REQUEST['content']??"";
+				$size=strlen($content);
+				if($size<20000){
+					$infoArray=array("articleId"=>$articleId,"title"=>$title,"author"=>$author,"label"=>$label,"content"=>$content,"size"=>$size);
+					
+					$count=$this->author->saveEditArticle($infoArray);
+					return $this->returnRusult($count,"count");
+				}else{
+					return $this->returnRusult("文章内容长度超过上限（最多1W字）");
+				}
+				
+			}else{
+				return $this->returnRusult("该请求被认为是骇客CSRF攻击");
 			}
 		}
 		
@@ -43,8 +68,9 @@
 		public function loadSelfArticles(){
 			$articles=$this->author->loadSelfArticles();
 			$resultArr=array("articles"=>$articles);
-			return json_encode($resultArr);
+			return $this->returnRusult($resultArr);
 		}
+		
 		
 		/**
 		 * 查询作者的文章
@@ -55,16 +81,27 @@
 			$count=$this->author->queryArticlesByKeywordCount($keyword);
 			$articles=$this->author->queryArticlesByKeyword($keyword,$page);
 			$resultArr=array("articles"=>$articles,"count"=>$count);
-			return json_encode($resultArr);
+			return $this->returnRusult($resultArr);
 		}
 		
 		/**
 		 * 加载作者一篇文章的详情
+		 * 是给直接加载文章详情的php页面使用的
 		 */
 		public function loadArticleDetails($articleId){			
 			$articleDetails=$this->author->loadArticleDetails($articleId);
 			$resultArr=array("articleDetails"=>$articleDetails);
-			return json_encode($resultArr,true);
+			return $this->returnArrayJson($resultArr);
+		}
+		
+		/**
+		 * 加载用户文章用于编辑
+		 */
+		public function loadArticleDetailsForEdit(){
+			$articleId=$_REQUEST['articleId']??"";
+			$articleDetails=$this->author->loadArticleDetails($articleId);
+			$resultArr=array("articleDetails"=>$articleDetails);
+			return $this->returnArrayJson($resultArr);
 		}
 		
 		/**
@@ -73,8 +110,7 @@
 		public function deleteSelfArticle(){
 			$articleId=$_REQUEST['articleId'];
 			$deleteArticleRow=$this->author->deleteSelfArticle($articleId);
-			$resultArr=array("deleteArticleRow"=>$deleteArticleRow);
-			return json_encode($resultArr);
+			return $this->returnRusult($deleteArticleRow,"deleteArticleRow");
 		}
 		
 		/**
@@ -83,8 +119,7 @@
 		public function publishSelfArticle(){
 			$articleId=$_REQUEST['articleId'];
 			$publishArticleRow=$this->author->publishSelfArticle($articleId);
-			$resultArr=array("publishArticleRow"=>$publishArticleRow);
-			return json_encode($resultArr);
+			return $this->returnRusult($publishArticleRow,"publishArticleRow");
 		}
 		
 		/**
@@ -93,8 +128,7 @@
 		public function cancelPublishSelfArticle(){
 			$articleId=$_REQUEST['articleId'];
 			$cancelPublishArticleRow=$this->author->cancelPublishSelfArticle($articleId);
-			$resultArr=array("cancelPublishArticleRow"=>$cancelPublishArticleRow);
-			return json_encode($resultArr);
+			return $this->returnRusult($cancelPublishArticleRow,"cancelPublishArticleRow");
 		}
 		 
 		 
@@ -125,6 +159,12 @@
 						}
 						if(isset($_REQUEST['action']) && $_REQUEST['action']=="cancelPublishSelfArticle"){
 							return $this->cancelPublishSelfArticle();
+						}
+						if(isset($_REQUEST['action']) && $_REQUEST['action']=="saveEditArticle"){
+							return $this->saveEditArticle();
+						}
+						if(isset($_REQUEST['action']) && $_REQUEST['action']=="loadArticleDetailsForEdit"){
+							return $this->loadArticleDetailsForEdit();
 						}
 					}
 					//否则返回无权限信息

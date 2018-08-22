@@ -7,7 +7,7 @@
 		
 		//执行每个测试前先登录系统
 		function setUp(){			
-			$this->author=new Author();
+			$this->author=new Author(true);
 			$username=UserName;
 			$password=Password;
 			$this->author->login($password, $username);
@@ -104,6 +104,18 @@
 			$keyword="测试";
 			$articles=$this->author->queryArticlesByKeyword($keyword);
 			$this->assertTrue(is_array($articles) && count($articles)>0);
+		}
+		
+		/**
+		 * 测试保存编辑之后的文章
+		 */
+		function testSaveEditArticle(){
+			$articleId=ArticleId;
+			//使用一个随机数函数，确保每次size都会改变，使得测试可以通过
+			$infoArray=array("articleId"=>$articleId,"title"=>ArticleTitle,"author"=>"李云天",
+				"size"=>mt_rand(100, 999),"label"=>"这是一个标签","content"=>"测试修改的内容");
+			$count=$this->author->saveEditArticle($infoArray);
+			$this->assertTrue(is_numeric($count) && $count>0);
 		}
 	}
 

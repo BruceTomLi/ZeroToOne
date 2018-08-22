@@ -171,5 +171,23 @@
 			$cancelPublishArticleRow=$pdo->getUIDResult($sql,$paraArr);
 			return $cancelPublishArticleRow;
 		}
+		
+		/**
+		 * 保存编辑之后的文章
+		 */
+		function saveEditArticle($infoArray){
+			global $pdo;
+			$publisher=$_SESSION['username']??"";//获取session用户，防止文章被非作者本人之外的人修改
+			$paraArr=array(":publisher"=>$publisher,":articleId"=>$infoArray['articleId'],":title"=>$infoArray['title'],":author"=>$infoArray['author'],
+				":size"=>$infoArray['size'],":label"=>$infoArray['label'],":articleContent"=>$infoArray['content']);
+			
+			$sql="update tb_article set title=:title,author=:author,size=:size,label=:label,articleContent=:articleContent ";
+			$sql.="where articleId=:articleId and publisher=(select userId from tb_user where username=:publisher)";
+			
+			$count=$pdo->getUIDResult($sql,$paraArr);
+			//删除用户多余的图片（文章，话题或者问题中的）
+			$this->deleteUserSpareImages();
+			return $count;
+		}
 	}
 ?>
