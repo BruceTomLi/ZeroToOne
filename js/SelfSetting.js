@@ -39,9 +39,6 @@ $(function(){
 		uploadSelfHeading();
 	});
 	
-	//加载完用户基本信息之后加载工作岗位信息和省份信息
-	getJobList();
-	getProvinceList();
 	//用户单击城市选项时，加载省份对应的城市信息
 	$("#province").on("click",function(){
 		getCityList();
@@ -77,8 +74,10 @@ function loadUserInfo(){
 					}
 					var jobHtml="<option value='"+value.job+"'>"+value.job+"</option>";
 					$("#inputJob").html(jobHtml);
+					getJobList();//加载工作选项信息
 					var provinceHtml="<option value='"+value.province+"'>"+value.province+"</option>";
 					$("#province").html(provinceHtml);
+					getProvinceList();//加载省份信息
 					var cityHtml="<option value='"+value.city+"'>"+value.city+"</option>";
 					$("#city").html(cityHtml);
 					$("#inputOneWord").val(value.oneWord);
@@ -326,7 +325,7 @@ function getJobList (){
 }
 
 /**
- * 加载省
+ * 加载省，延迟到加载出用户信息之后才执行
  */
 function getProvinceList (){
 	$.ajax({
