@@ -97,7 +97,7 @@
 			$paraArr=array(":username"=>$username,":keyword"=>$keyword);
 			$sql="select :username as publisherName,articleId,title,author,publishDate,publisher,size,label from tb_article ";
 			$sql.="where publisher=(select userId from tb_user where username=:username) and ";
-			$sql.="(title like :keyword or label like :keyword) limit $startRow,5";
+			$sql.="(title like :keyword or label like :keyword or articleContent like :keyword) limit $startRow,5";
 			$articles=$pdo->getQueryResult($sql,$paraArr);
 			return $articles;
 		}
@@ -112,7 +112,7 @@
 			$paraArr=array(":username"=>$username,":keyword"=>$keyword);
 			$sql="select count(*) as articleCount from tb_article ";
 			$sql.="where publisher=(select userId from tb_user where username=:username) and ";
-			$sql.="(title like :keyword or label like :keyword)";
+			$sql.="(title like :keyword or label like :keyword or articleContent like :keyword)";
 			$count=$pdo->getOneFiled($sql,"articleCount",$paraArr);
 			return $count;
 		}
