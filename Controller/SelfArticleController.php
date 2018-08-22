@@ -16,9 +16,10 @@
 			$token=$_REQUEST['token']??"";
 			if($token==$_SESSION['token']){
 				//传入的内容过多就截断
-				$title=substr(trim($_REQUEST['title']??""),0,80);
-				$author=substr(trim($_REQUEST['author']??""),0,35);
-				$label=substr(trim($_REQUEST['label']??""),0,80);
+				$title=mb_substr(trim($_REQUEST['title']??""),0,99);
+				$author=mb_substr(trim($_REQUEST['author']??""),0,24);
+				$label=trim($_REQUEST['label']??"");
+				$label=mb_substr($label,0,149);
 				$content=$_REQUEST['content']??"";
 				$size=strlen($content);
 				if($size<20000){
@@ -43,9 +44,10 @@
 			if($token==$_SESSION['token']){
 				$articleId=$_REQUEST['articleId']??"";
 				//传入的内容过多就截断
-				$title=substr(trim($_REQUEST['title']??""),0,80);
-				$author=substr(trim($_REQUEST['author']??""),0,35);
-				$label=substr(trim($_REQUEST['label']??""),0,80);
+				$title=mb_substr(trim($_REQUEST['title']??""),0,99);
+				$author=mb_substr(trim($_REQUEST['author']??""),0,24);
+				$label=trim($_REQUEST['label']??"");
+				$label=mb_substr($label,0,149);
 				$content=$_REQUEST['content']??"";
 				$size=strlen($content);
 				if($size<20000){

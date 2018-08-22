@@ -44,7 +44,7 @@
 						  	<div class="control-group">
 						  		<label class="control-label" for="changeTitle">标题</label>
 						    	<div class="controls">
-							      	<input type="text" id="changeTitle" placeholder="最多50字">
+							      	<input type="text" id="changeTitle" placeholder="最多100字">
 							    </div>
 						  	</div>
 						  	<div class="control-group">
@@ -56,7 +56,7 @@
 							<div class="control-group">
 								<label class="control-label" for="changeLabel">文章标签</label>
 							    <div class="controls">
-							    	<input type="text" id="changeLabel" placeholder="最多50字">
+							    	<input type="text" id="changeLabel" placeholder="最多150字">
 							    </div>
 							</div>
 							

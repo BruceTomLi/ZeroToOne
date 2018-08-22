@@ -295,22 +295,29 @@ function getReplysForComment(obj,isShow="false"){
 			{action:"getReplysForComment",commentId:commentId},
 			function(data){
 				var result=$.trim(data);
-				result=$.parseJSON(result);
-				var replyList="";
-				result.replys.forEach(function(value,index){
-					replyList+="<li>";
-					replyList+="<span><a target='_blank' href='../forum/person.php?userId="+value.replyerId+"'>"+value.replyer+"</a>&nbsp;";
-					replyList+="回复&nbsp;<a target='_blank' href='../forum/person.php?userId="+value.fatherReplyerId+"'>"+value.fatherReplyer+"</a>：</span>";
-					replyList+="<span>"+value.content+"</span>";
-					//传递commentId到它的回复信息的div中，否则回复信息的div中的元素将不方便获取commentId的值
-					replyList+="<input type='hidden' class='commentIdForReplys' value='"+commentId+"' />";
-					if(value.replyer==result.logonUser){
-						replyList+="<button class='btn-link disableReplyBtn' value='"+value.replyId+"'onClick='disableReply(this)'>删除</button>";
-					}
-					replyList+="<button class='btn-link replyBtn' value='"+value.replyId+"' onClick='showReplyReplyDiv(this)'>回复</button>";
-				});
-				$(obj).siblings(".replysForComment").html(replyList);
-				$(obj).siblings(".replysForComment").show();
+				var pattern=new RegExp("\{([^\{]+)[\s\S]*(\})$","gi");//使用正则表达式检测结果是否为json格式，以{开头，以}结尾，中间任意字符
+				if(pattern.test(result)){
+					result=$.parseJSON(result);
+					var replyList="";
+					result.replys.forEach(function(value,index){
+						replyList+="<li>";
+						replyList+="<span><a target='_blank' href='../forum/person.php?userId="+value.replyerId+"'>"+value.replyer+"</a>&nbsp;";
+						replyList+="回复&nbsp;<a target='_blank' href='../forum/person.php?userId="+value.fatherReplyerId+"'>"+value.fatherReplyer+"</a>：</span>";
+						replyList+="<span>"+value.content+"</span>";
+						//传递commentId到它的回复信息的div中，否则回复信息的div中的元素将不方便获取commentId的值
+						replyList+="<input type='hidden' class='commentIdForReplys' value='"+commentId+"' />";
+						if(value.replyer==result.logonUser){
+							replyList+="<button class='btn-link disableReplyBtn' value='"+value.replyId+"'onClick='disableReply(this)'>删除</button>";
+						}
+						replyList+="<button class='btn-link replyBtn' value='"+value.replyId+"' onClick='showReplyReplyDiv(this)'>回复</button>";
+					});
+					$(obj).siblings(".replysForComment").html(replyList);
+					$(obj).siblings(".replysForComment").show();
+				}else{
+					result=(decodeURI(result));
+					var reg=/\"/g;
+					alert(result.replace(reg,''));
+				}
 			}
 		);
 	}

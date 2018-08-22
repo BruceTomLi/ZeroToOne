@@ -86,7 +86,7 @@
 			if($this->user->isUserLogon()){
 				$logonUser=$this->user->getLogonUsername();
 			}
-			$resultArr=array("logonUser"=>$logonUser,"replys"=>$this->user->getReplysForComment($commentId));
+			$result=array("logonUser"=>$logonUser,"replys"=>$this->user->getReplysForComment($commentId));
 			if(is_array($result)){
 				return json_encode($result);
 			}
@@ -185,6 +185,9 @@
 				if(isset($_REQUEST['action']) && $_REQUEST['action']=="isUserLogon"){
 					return $this->isUserLogon();
 				}
+				if(isset($_REQUEST['action']) && $_REQUEST['action']=="getReplysForComment"){
+					return $this->getReplysForComment();
+				}
 				//用户需要登录系统，并且有权限才能执行相应的action
 				if($this->topicManager->isUserLogon()){
 					//可以执行的action
@@ -202,9 +205,7 @@
 						if(isset($_REQUEST['action']) && $_REQUEST['action']=="disableCommentForTopic"){
 							return $this->disableCommentForTopic();
 						}
-						if(isset($_REQUEST['action']) && $_REQUEST['action']=="getReplysForComment"){
-							return $this->getReplysForComment();
-						}
+						
 						if(isset($_REQUEST['action']) && $_REQUEST['action']=="replyComment"){
 							return $this->replyComment();
 						}

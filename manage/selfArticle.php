@@ -138,7 +138,7 @@
 						  	<div class="control-group">
 						  		<label class="control-label" for="inputTitle">标题</label>
 						    	<div class="controls">
-							      	<input type="text" id="inputTitle" placeholder="最多50字">
+							      	<input type="text" id="inputTitle" placeholder="最多100字">
 							    </div>
 						  	</div>
 						  	<div class="control-group">
@@ -150,7 +150,7 @@
 							<div class="control-group">
 								<label class="control-label" for="inputLabel">文章标签</label>
 							    <div class="controls">
-							    	<input type="text" id="inputLabel" placeholder="最多50字">
+							    	<input type="text" id="inputLabel" placeholder="最多150字">
 							    </div>
 							</div>
 							

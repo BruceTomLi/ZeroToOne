@@ -259,6 +259,9 @@
 				if(isset($_REQUEST['action']) && $_REQUEST['action']=="getTodayTopics"){
 					return $this->getTodayTopics();
 				}
+				if(isset($_REQUEST['action']) && $_REQUEST['action']=="getReplysForComment"){
+					return $this->getReplysForComment();
+				}
 				
 				//用户需要登录系统，并且有权限才能执行相应的action
 				if($this->questionManager->isUserLogon()){
@@ -277,9 +280,7 @@
 						if(isset($_REQUEST['action']) && $_REQUEST['action']=="disableCommentForQuestion"){
 							return $this->disableCommentForQuestion();
 						}
-						if(isset($_REQUEST['action']) && $_REQUEST['action']=="getReplysForComment"){
-							return $this->getReplysForComment();
-						}
+						
 						if(isset($_REQUEST['action']) && $_REQUEST['action']=="replyComment"){
 							return $this->replyComment();
 						}

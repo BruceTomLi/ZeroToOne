@@ -33,7 +33,7 @@
 					<div class="span9">
 						<ul class="nav nav-tabs pull-right">
 							<li>
-								<a href='question.php'>返回问题列表</a>
+								<a href='#' onclick="javascript:history.back(-1);">返回问题列表</a>
 							</li>
 						</ul>
 						<section class="questionDescription">
