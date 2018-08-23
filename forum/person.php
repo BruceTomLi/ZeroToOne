@@ -38,7 +38,9 @@
 		<script src="https://cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
 		
 		<link href="../css/person.css" rel="stylesheet" type="text/css">
-		<script src="../js/echarts.min.js"></script>
+		<!--<script src="../js/echarts.min.js"></script>-->
+		<!--<script src="http://echarts.baidu.com/build/dist/echarts.js"></script>-->
+		<script src="https://cdn.bootcss.com/echarts/4.1.0.rc1/echarts.min.js"></script>
 		<script src="../js/person.js"></script>
 	</head>
 	<body>

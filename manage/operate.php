@@ -16,7 +16,8 @@
 		<link href="../css/manage.css" rel="stylesheet" type="text/css">
 		<link href="../css/manageSelf.css" rel="stylesheet" type="text/css">
 		<script src="../js/manage.js"></script>	
-		<script src="../js/echarts.min.js"></script>	
+		<!--<script src="../js/echarts.min.js"></script>-->	
+		<script src="https://cdn.bootcss.com/echarts/4.1.0.rc1/echarts.min.js"></script>
 		<script src="../js/operate.js"></script>
 	</head>
 	<body>
