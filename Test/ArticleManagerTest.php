@@ -10,7 +10,7 @@
 		
 		//执行每个测试前先登录系统
 		function setUp(){			
-			$this->articleManager=new ArticleManager();
+			$this->articleManager=new ArticleManager(true);
 			$username=UserName;
 			$password=Password;
 			$this->articleManager->login($password, $username);

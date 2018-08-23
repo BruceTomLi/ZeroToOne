@@ -876,6 +876,22 @@
 			$this->assertTrue($result);
 		}
 		
+		/**
+		 * 测试访客是否已经存在
+		 */
+		function testIsVisitorExist(){
+			$this->assertTrue($this->user->isVisitorExist());
+		}
+		
+		/**
+		 * 测试记录访客来访信息
+		 */
+		function testSaveVisitorRecord(){
+			$count=$this->user->saveVisitorRecord();
+			$this->assertTrue(is_numeric($count) && $count>0);
+		}
+		
+		
 	}
 
 ?>

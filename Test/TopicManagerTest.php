@@ -7,7 +7,7 @@
 		private $topicManager;
 		
 		function setUp(){
-			$this->topicManager=new TopicManager();
+			$this->topicManager=new TopicManager(true);
 			$username=UserName;
 			$password=Password;
 			$this->topicManager->login($password, $username);

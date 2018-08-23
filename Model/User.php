@@ -4,6 +4,7 @@
 	require_once(__DIR__."/../Config/config.php");
 	require_once(__DIR__.'/../classes/MysqlPdo.php');	
 	require_once(__DIR__.'/../classes/ImgCompress.php');	
+	require_once(__DIR__.'/../classes/IpHandler.php');	
 	class User{
 		// 下面的属性在程序中都用不到，我先注释起来
 		// private $id;
@@ -21,7 +22,20 @@
 		function __construct($isPHPUnit=false){
 			//在构造函数中设置时间格式，避免在其他地方重复设置
 			date_default_timezone_set('PRC'); 
+			//设置是否使用phpunit在测试程序
 			$this->isPHPUnit=$isPHPUnit;
+			//对访客进行记录，使用$_SESSION['visit']来判断，对一次会话进行一次记录
+			if(!isset($_SESSION['visit'])){
+				$_SESSION['visit']="begin";
+				$this->saveVisitorRecord();
+			}
+			//用户登录之后再记录一次，通过改变$_SESSION['visit']的值，使得程序只能执行一次
+			if(isset($_SESSION['visit'])){
+				if($_SESSION['visit']=="begin" && isset($_SESSION['username'])){
+					$_SESSION['visit']="twice";
+					$this->saveVisitorRecord();
+				}
+			}			
 		}
 		/**
 		 * 下面的注册方法是填写完整信息之后进行注册
@@ -1672,5 +1686,46 @@
 			$pwdOverTimes=$pdo->getOneFiled($sql, "pwdOverTimes", $paraArr);
 			return $pwdOverTimes=="yes"?true:false;
 		}
+		
+		/**
+		 * 判断访客是否存在（根据visitorId和visitorIP进行判断，存在两者一致的信息时，就认为是同一个访客）
+		 */
+		function isVisitorExist(){
+			$visitorName=$_SESSION['username']??"";
+			$visitorIp=IpHandler::getIP();
+			global $pdo;
+			$paraArr=array(":visitorName"=>$visitorName,":visitorIp"=>$visitorIp);
+			$sql="select count(*) as visitCount from tb_visit where visitorId=";
+			$sql.="(select case when count(userId)>0 then userId else 'notLogon' end from tb_user where username=:visitorName) and visitorIp=:visitorIp";
+			$count=$pdo->getOneFiled($sql, "visitCount",$paraArr);
+			return $count>0?true:false;
+		}
+		
+		/**
+		 * 记录访客来访次数和ip信息
+		 */
+		function saveVisitorRecord(){
+			global $pdo;
+			$visitorName=$_SESSION['username']??"";
+			$visitorIp=IpHandler::getIP();
+			$visitTime=date("Y-m-d H:i:s");
+			//访客信息已经存在时，就重新设置访问时间，并将访问次数增加一
+			if($this->isVisitorExist()){
+				$paraArr=array(":visitTime"=>$visitTime,":visitorName"=>$visitorName,":visitorIp"=>$visitorIp);
+				$sql="update tb_visit set visitTime=:visitTime,visitCount=visitCount+1 ";
+				$sql.=" where visitorId=(select userId from tb_user where username=:visitorName) and visitorIp=:visitorIp";
+				$count=$pdo->getUIDResult($sql,$paraArr);
+				return $count;
+			}else{//访客信息不存在（第一次访问网站，就记录下访问信息）
+				$visitId=uniqid("",true);
+				$paraArr=array(":visitId"=>$visitId,":visitTime"=>$visitTime,":visitorName"=>$visitorName,":visitorIp"=>$visitorIp,":visitCount"=>1);
+				$sql="insert into tb_visit values(:visitId,:visitTime,";
+				$sql.="(select case when count(userId)>0 then userId else 'notLogon' end from tb_user where username=:visitorName),:visitorIp,:visitCount)";
+				$count=$pdo->getUIDResult($sql,$paraArr);
+				return $count;
+			}
+		}
+		
+		
 	}
 ?>

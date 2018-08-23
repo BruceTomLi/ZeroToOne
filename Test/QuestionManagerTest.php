@@ -7,7 +7,7 @@
 		private $questionManager;
 		
 		function setUp(){
-			$this->questionManager=new QuestionManager();
+			$this->questionManager=new QuestionManager(true);
 			$username=UserName;
 			$password=Password;
 			$this->questionManager->login($password, $username);

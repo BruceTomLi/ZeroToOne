@@ -1,7 +1,8 @@
 <?php
 	require_once(__DIR__.'/../Model/User.php');
 	require_once(__DIR__.'/../Model/Operator.php');
-	class NoticeManageController{
+	require_once("BaseController.php");
+	class NoticeManageController extends BaseController{
 		private $operator;
 		
 		public function __construct(){
@@ -13,8 +14,8 @@
 		 */
 		public function loadManWomanCount(){
 			$manWomanCount=$this->operator->loadManWomanCount();
-			$resultArr=array("manWomanCount"=>$manWomanCount);
-			return json_encode($resultArr);
+			$result=array("manWomanCount"=>$manWomanCount);
+			return $this->returnRusult($result);
 		}
 		
 		/**
@@ -22,8 +23,8 @@
 		 */
 		public function loadKindsOfQuestionCount(){
 			$questionTypeCount=$this->operator->loadKindsOfQuestionCount();
-			$resultArr=array("questionTypeCount"=>$questionTypeCount);
-			return json_encode($resultArr);
+			$result=array("questionTypeCount"=>$questionTypeCount);
+			return $this->returnRusult($result);
 		}
 		
 		/**
@@ -31,8 +32,8 @@
 		 */
 		public function loadKindsOfTopicCount(){
 			$topicTypeCount=$this->operator->loadKindsOfTopicCount();
-			$resultArr=array("topicTypeCount"=>$topicTypeCount);
-			return json_encode($resultArr);
+			$result=array("topicTypeCount"=>$topicTypeCount);
+			return $this->returnRusult($result);
 		}
 		
 		/**
@@ -40,8 +41,8 @@
 		 */
 		public function loadKindsOfJobUserCount(){
 			$jobUserCount=$this->operator->loadKindsOfJobUserCount();
-			$resultArr=array("jobUserCount"=>$jobUserCount);
-			return json_encode($resultArr);
+			$result=array("jobUserCount"=>$jobUserCount);
+			return $this->returnRusult($result);
 		}
 		
 		/**
@@ -49,9 +50,22 @@
 		 */
 		public function loadKindsUserInfoCount(){
 			$userInfoCount=$this->operator->loadKindsUserInfoCount();
-			$resultArr=array("userInfoCount"=>$userInfoCount);
-			return json_encode($resultArr);
+			$result=array("userInfoCount"=>$userInfoCount);
+			return $this->returnRusult($result);
 		}
+		
+		/**
+		 * 加载网站中的个人信息
+		 */
+		public function searchVisitInfo(){
+			$keyword=$_REQUEST['keyword']??"";
+			$page=$_REQUEST['page']??1;
+			$count=$this->operator->searchVisitInfoCount($keyword);
+			$visitInfoList=$this->operator->searchVisitInfo($keyword,$page);
+			$visitInfoList=array("visitInfos"=>$visitInfoList,"count"=>$count);
+			return $this->returnRusult($visitInfoList);
+		}
+		
 		/**
 		 * 选择不同的动作
 		 */
@@ -77,6 +91,9 @@
 						}
 						if(isset($_REQUEST['action']) && $_REQUEST['action']=="loadKindsOfJobUserCount"){
 							return $this->loadKindsOfJobUserCount();
+						}	
+						if(isset($_REQUEST['action']) && $_REQUEST['action']=="searchVisitInfo"){
+							return $this->searchVisitInfo();
 						}					
 					}
 					//否则返回无权限信息

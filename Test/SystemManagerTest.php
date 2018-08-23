@@ -9,7 +9,7 @@
 		private $systemManager;
 		
 		function setUp(){
-			$this->systemManager=new SystemManager();
+			$this->systemManager=new SystemManager(true);
 			$username=UserName;
 			$password=Password;	
 			$this->systemManager->login($password, $username);

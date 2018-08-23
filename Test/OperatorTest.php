@@ -6,7 +6,7 @@
 		private $operator;
 		//执行每个测试前先登录系统
 		function setUp(){
-			$this->operator=new Operator();
+			$this->operator=new Operator(true);
 			$username=UserName;
 			$password=Password;
 			$this->operator->login($password, $username);
@@ -103,6 +103,24 @@
 			$userId=UserId;
 			$userInfoCount=$this->operator->loadKindsUserInfoCount($userId);
 			$this->assertTrue(is_array($userInfoCount) && count($userInfoCount)>0);
+		}
+		
+		/**
+		 * 测试获取系统中关键字相关的访问信息
+		 */
+		function testSearchVisitInfoCount(){
+			$keyword="";
+			$result=$this->operator->searchVisitInfoCount($keyword);
+			$this->assertTrue(is_numeric($result) && $result>0);
+		}
+		
+		/**
+		 * 测试获取系统中关键字相关的访问信息
+		 */
+		function testSearchVisitInfo(){
+			$keyword="";
+			$result=$this->operator->searchVisitInfo($keyword);
+			$this->assertTrue(is_array($result) && count($result)>0);
 		}
 	}
 ?>

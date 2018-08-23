@@ -25,12 +25,19 @@ function loadManWomanCount(){
 		{action:"loadManWomanCount"},
 		function(data){
 			var result=$.trim(data);
-			result=$.parseJSON(result);
-			result.manWomanCount.forEach(function(value,index){
-				var manCount=value.maleCount;
-				var womanCount=value.femaleCount;
-				showManWomanCount(manCount,womanCount);
-			});
+			var pattern=new RegExp("\{([^\{]+)[\s\S]*(\})$","gi");//使用正则表达式检测结果是否为json格式，以{开头，以}结尾，中间任意字符
+			if(pattern.test(result)){
+				result=$.parseJSON(result);
+				result.manWomanCount.forEach(function(value,index){
+					var manCount=value.maleCount;
+					var womanCount=value.femaleCount;
+					showManWomanCount(manCount,womanCount);
+				});
+			}else{
+				result=decodeURI(result);
+				var reg=/\"/g;
+				alert(result.replace(reg,''));
+			}
 		}
 	);
 }
@@ -67,33 +74,40 @@ function loadKindsOfJobUserCount(){
 		{action:"loadKindsOfJobUserCount"},
 		function(data){
 			var result=$.trim(data);
-			result=$.parseJSON(result);
-			result.jobUserCount.forEach(function(value,index){
-				var economyCount=value.economyCount;
-				var businessCount=value.businessCount;
-				var lawCount=value.lawCount;
-				var societyCount=value.societyCount;
-				var healthCount=value.healthCount;
-				
-				var sportsCount=value.sportsCount;
-				var artCount=value.artCount;
-				var electronCount=value.electronCount;
-				var amusementCount=value.amusementCount;
-				var areaCount=value.areaCount;
-				
-				var psychicCount=value.psychicCount;
-				var medicalCount=value.medicalCount;
-				var scienceCount=value.scienceCount;
-				var computerCount=value.computerCount;
-				var otherCount=value.otherCount;
-				var counts=['人员数量',economyCount,businessCount,lawCount,societyCount,healthCount,
-							sportsCount,artCount,electronCount,amusementCount,areaCount,
-							psychicCount,medicalCount,scienceCount,computerCount,otherCount];
-				var columns=['type','经济金融','企业管理','法律法规','社会民生','健康生活',
-							'体育运动','文化艺术','电子数码','娱乐休闲','地理地区','心理分析',
-							'医疗卫生','科学教育','电脑网络','其他'];
-				showKindsOfJobUserCount(counts,columns);
-			});
+			var pattern=new RegExp("\{([^\{]+)[\s\S]*(\})$","gi");//使用正则表达式检测结果是否为json格式，以{开头，以}结尾，中间任意字符
+			if(pattern.test(result)){
+				result=$.parseJSON(result);
+				result.jobUserCount.forEach(function(value,index){
+					var economyCount=value.economyCount;
+					var businessCount=value.businessCount;
+					var lawCount=value.lawCount;
+					var societyCount=value.societyCount;
+					var healthCount=value.healthCount;
+					
+					var sportsCount=value.sportsCount;
+					var artCount=value.artCount;
+					var electronCount=value.electronCount;
+					var amusementCount=value.amusementCount;
+					var areaCount=value.areaCount;
+					
+					var psychicCount=value.psychicCount;
+					var medicalCount=value.medicalCount;
+					var scienceCount=value.scienceCount;
+					var computerCount=value.computerCount;
+					var otherCount=value.otherCount;
+					var counts=['人员数量',economyCount,businessCount,lawCount,societyCount,healthCount,
+								sportsCount,artCount,electronCount,amusementCount,areaCount,
+								psychicCount,medicalCount,scienceCount,computerCount,otherCount];
+					var columns=['type','经济金融','企业管理','法律法规','社会民生','健康生活',
+								'体育运动','文化艺术','电子数码','娱乐休闲','地理地区','心理分析',
+								'医疗卫生','科学教育','电脑网络','其他'];
+					showKindsOfJobUserCount(counts,columns);
+				});
+			}else{
+				result=decodeURI(result);
+				var reg=/\"/g;
+				alert(result.replace(reg,''));
+			}
 		}
 	);
 }
@@ -157,33 +171,40 @@ function loadKindsOfQuestionCount(){
 		{action:"loadKindsOfQuestionCount"},
 		function(data){
 			var result=$.trim(data);
-			result=$.parseJSON(result);
-			result.questionTypeCount.forEach(function(value,index){
-				var economyCount=value.economyCount;
-				var businessCount=value.businessCount;
-				var lawCount=value.lawCount;
-				var societyCount=value.societyCount;
-				var healthCount=value.healthCount;
-				
-				var sportsCount=value.sportsCount;
-				var artCount=value.artCount;
-				var electronCount=value.electronCount;
-				var amusementCount=value.amusementCount;
-				var areaCount=value.areaCount;
-				
-				var psychicCount=value.psychicCount;
-				var medicalCount=value.medicalCount;
-				var scienceCount=value.scienceCount;
-				var computerCount=value.computerCount;
-				var otherCount=value.otherCount;
-				var counts=['问题数量',economyCount,businessCount,lawCount,societyCount,healthCount,
-							sportsCount,artCount,electronCount,amusementCount,areaCount,
-							psychicCount,medicalCount,scienceCount,computerCount,otherCount];
-				var columns=['type','经济金融','企业管理','法律法规','社会民生','健康生活',
-							'体育运动','文化艺术','电子数码','娱乐休闲','地理地区','心理分析',
-							'医疗卫生','科学教育','电脑网络','其他'];
-				showKindsOfQuestionCount(counts,columns);
-			});
+			var pattern=new RegExp("\{([^\{]+)[\s\S]*(\})$","gi");//使用正则表达式检测结果是否为json格式，以{开头，以}结尾，中间任意字符
+			if(pattern.test(result)){
+				result=$.parseJSON(result);
+				result.questionTypeCount.forEach(function(value,index){
+					var economyCount=value.economyCount;
+					var businessCount=value.businessCount;
+					var lawCount=value.lawCount;
+					var societyCount=value.societyCount;
+					var healthCount=value.healthCount;
+					
+					var sportsCount=value.sportsCount;
+					var artCount=value.artCount;
+					var electronCount=value.electronCount;
+					var amusementCount=value.amusementCount;
+					var areaCount=value.areaCount;
+					
+					var psychicCount=value.psychicCount;
+					var medicalCount=value.medicalCount;
+					var scienceCount=value.scienceCount;
+					var computerCount=value.computerCount;
+					var otherCount=value.otherCount;
+					var counts=['问题数量',economyCount,businessCount,lawCount,societyCount,healthCount,
+								sportsCount,artCount,electronCount,amusementCount,areaCount,
+								psychicCount,medicalCount,scienceCount,computerCount,otherCount];
+					var columns=['type','经济金融','企业管理','法律法规','社会民生','健康生活',
+								'体育运动','文化艺术','电子数码','娱乐休闲','地理地区','心理分析',
+								'医疗卫生','科学教育','电脑网络','其他'];
+					showKindsOfQuestionCount(counts,columns);
+				});
+			}else{
+				result=decodeURI(result);
+				var reg=/\"/g;
+				alert(result.replace(reg,''));
+			}
 		}
 	);
 }
@@ -246,33 +267,40 @@ function loadKindsOfTopicCount(){
 		{action:"loadKindsOfTopicCount"},
 		function(data){
 			var result=$.trim(data);
-			result=$.parseJSON(result);
-			result.topicTypeCount.forEach(function(value,index){
-				var economyCount=value.economyCount;
-				var businessCount=value.businessCount;
-				var lawCount=value.lawCount;
-				var societyCount=value.societyCount;
-				var healthCount=value.healthCount;
-				
-				var sportsCount=value.sportsCount;
-				var artCount=value.artCount;
-				var electronCount=value.electronCount;
-				var amusementCount=value.amusementCount;
-				var areaCount=value.areaCount;
-				
-				var psychicCount=value.psychicCount;
-				var medicalCount=value.medicalCount;
-				var scienceCount=value.scienceCount;
-				var computerCount=value.computerCount;
-				var otherCount=value.otherCount;
-				var counts=['话题数量',economyCount,businessCount,lawCount,societyCount,healthCount,
-							sportsCount,artCount,electronCount,amusementCount,areaCount,
-							psychicCount,medicalCount,scienceCount,computerCount,otherCount];
-				var columns=['type','经济金融','企业管理','法律法规','社会民生','健康生活',
-							'体育运动','文化艺术','电子数码','娱乐休闲','地理地区','心理分析',
-							'医疗卫生','科学教育','电脑网络','其他'];
-				showKindsOfTopicCount(counts,columns);
-			});
+			var pattern=new RegExp("\{([^\{]+)[\s\S]*(\})$","gi");//使用正则表达式检测结果是否为json格式，以{开头，以}结尾，中间任意字符
+			if(pattern.test(result)){
+				result=$.parseJSON(result);
+				result.topicTypeCount.forEach(function(value,index){
+					var economyCount=value.economyCount;
+					var businessCount=value.businessCount;
+					var lawCount=value.lawCount;
+					var societyCount=value.societyCount;
+					var healthCount=value.healthCount;
+					
+					var sportsCount=value.sportsCount;
+					var artCount=value.artCount;
+					var electronCount=value.electronCount;
+					var amusementCount=value.amusementCount;
+					var areaCount=value.areaCount;
+					
+					var psychicCount=value.psychicCount;
+					var medicalCount=value.medicalCount;
+					var scienceCount=value.scienceCount;
+					var computerCount=value.computerCount;
+					var otherCount=value.otherCount;
+					var counts=['话题数量',economyCount,businessCount,lawCount,societyCount,healthCount,
+								sportsCount,artCount,electronCount,amusementCount,areaCount,
+								psychicCount,medicalCount,scienceCount,computerCount,otherCount];
+					var columns=['type','经济金融','企业管理','法律法规','社会民生','健康生活',
+								'体育运动','文化艺术','电子数码','娱乐休闲','地理地区','心理分析',
+								'医疗卫生','科学教育','电脑网络','其他'];
+					showKindsOfTopicCount(counts,columns);
+				});
+			}else{
+				result=decodeURI(result);
+				var reg=/\"/g;
+				alert(result.replace(reg,''));
+			}
 		}
 	);
 }

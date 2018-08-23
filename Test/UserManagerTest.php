@@ -9,7 +9,7 @@
 		private $userManager;
 		
 		function setUp(){
-			$this->userManager=new UserManager();
+			$this->userManager=new UserManager(true);
 			$username=UserName;
 			$password=Password;
 			$this->userManager->login($password, $username);

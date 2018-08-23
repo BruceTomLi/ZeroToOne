@@ -9,7 +9,7 @@
 		private $powerManager;
 		//执行每个测试前先登录系统
 		function setUp(){
-			$this->powerManager=new PowerManager();
+			$this->powerManager=new PowerManager(true);
 			$username=UserName;
 			$password=Password;	
 			$this->powerManager->login($password, $username);

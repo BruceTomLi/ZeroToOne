@@ -9,7 +9,7 @@
 		private $roleManager;
 		
 		function setUp(){
-			$this->roleManager=new RoleManager();
+			$this->roleManager=new RoleManager(true);
 			$username=UserName;
 			$password=Password;	
 			$this->roleManager->login($password, $username);

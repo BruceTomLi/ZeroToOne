@@ -56,6 +56,7 @@
 									<?php if($user->hasAuthority(Operate)){ ?>
 										<li><a href="notices.php">公告</a></li>
 						      			<li><a href="operate.php">运营</a></li>
+						      			<li><a href="visitInfo.php">访问信息</a></li>
 									<?php } ?>
 									<!--加载问题管理员菜单-->
 									<?php if($user->hasAuthority(QuestionManage)){ ?>

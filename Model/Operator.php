@@ -129,5 +129,37 @@
 			$userInfoCount=$pdo->getQueryResult($sql,$paraArr);
 			return $userInfoCount;
 		}
+		
+		/**
+		 * 通过关键字检索访问者信息
+		 */
+		function searchVisitInfo($keyword,$page=1){
+			global $pdo;
+			//获取分页数据
+			$count=$this->searchVisitInfoCount($keyword);
+			$pageTotal=ceil($count/5);//获取总页数
+			//规范化页数，并返回起始页
+			$startRow=$this->getStartPage($page,$pageTotal);
+			
+			$keyword="%".$keyword."%";//使用模糊查询，前后要加百分号
+			$paraArr=array(":keyword"=>$keyword,":startRow"=>$startRow);
+			$sql="call pro_getVisitorInfo(:keyword,:startRow)";
+			$visitInfoList=$pdo->getQueryResult($sql,$paraArr);
+			return $visitInfoList;
+		}		
+		
+		/**
+		 * 获取检索的记录数
+		 */
+		function searchVisitInfoCount($keyword){
+			global $pdo;				
+			$keyword="%".$keyword."%";//使用模糊查询，前后要加百分号
+			$keyword="%".$keyword."%";//使用模糊查询，前后要加百分号
+			$paraArr=array(":keyword"=>$keyword);
+			$sql="call pro_getVisitorInfoCount(:keyword)";
+			$count=$pdo->getOneFiled($sql, "visitInfoCount",$paraArr);
+			return $count;
+		}
+		
 	}
 ?>
