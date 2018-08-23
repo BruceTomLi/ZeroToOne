@@ -158,7 +158,7 @@
 			$paraArr=array(":keyword"=>$keyword);
 			$sql="call pro_getVisitorInfoCount(:keyword)";
 			$count=$pdo->getOneFiled($sql, "visitInfoCount",$paraArr);
-			return $count;
+			return $count??0;
 		}
 		
 	}

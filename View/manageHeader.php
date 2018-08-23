@@ -16,7 +16,8 @@
 	$token=$_SESSION['token'];
 	
 ?>
-<link href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
+<!--<link href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">-->
+<link href="https://cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet">		
 <link rel="stylesheet" type="text/css" href="../css/header.css">
 <script src="../js/checkUserLogon.js"></script>	
 <script>

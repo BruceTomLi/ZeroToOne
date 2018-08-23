@@ -8,14 +8,20 @@
 		<meta charset="UTF-8">
 		<title>管理我的文章</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<!--<link href="../bootstrap/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+		<link href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
+		<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+		<script src="../js/jquery-1.9.1.js"></script>
+		<script src="../bootstrap/js/bootstrap.min.js"></script>-->
+		<link href="https://cdn.bootcss.com/bootstrap/2.3.0/css/bootstrap.no-icons.min.css" rel="stylesheet">
+		<link href="https://cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+		<link href="https://cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet">
+		<script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="https://cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+		
 		<link href="../external/google-code-prettify/prettify.css" rel="stylesheet">
-	    <link href="../bootstrap/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
-	    <link href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
 	    <link href="../external/font-awesome.css" rel="stylesheet">
-	    <script src="../js/jquery-1.9.1.js"></script>
 	    <script src="../external/jquery.hotkeys.js"></script>
-		<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">	
-		<script src="../bootstrap/js/bootstrap.min.js"></script>
 		<script src="../external/google-code-prettify/prettify.js"></script>
 		<link href="../css/manageSelf.css" rel="stylesheet" type="text/css">
 		<script src="../bootstrap-wysiwyg.js"></script>
