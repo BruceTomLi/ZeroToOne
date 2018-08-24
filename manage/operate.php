@@ -2,8 +2,10 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>网站信息统计</title>
+		<title>零一知享-运营</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<meta name="keywords" content="零一知享,lingyiyiling,lingyizhixiang">
+		<meta name="description" content="零一知享管理,零一知享运营">
 		<!--<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 		<link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
 		<script src="../js/jquery-1.9.1.js"></script>

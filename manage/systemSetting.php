@@ -2,7 +2,9 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>管理系统设置</title>
+		<title>零一知享-系统设置管理</title>
+		<meta name="keywords" content="零一知享,lingyiyiling,lingyizhixiang">
+		<meta name="description" content="零一知享系统设置管理">
 		<meta name="viewport" content="width=device-width,initial-scale=1.0">
 		<!--<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">			
 		<script src="../js/jquery-1.9.1.js"></script>

@@ -9,8 +9,10 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>问题页</title>
+	<title>零一知享-问题页</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<meta name="keywords" content="零一知享,lingyiyiling,lingyizhixiang">
+	<meta name="description" content="零一知享问题交流">
 	<!--<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	<link href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">	
 	<script src="../js/jquery-1.9.1.js"></script>

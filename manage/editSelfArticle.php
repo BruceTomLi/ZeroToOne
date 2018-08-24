@@ -6,8 +6,10 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>管理我的文章</title>
+		<title>零一知享-个人文章管理</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<meta name="keywords" content="零一知享,lingyiyiling,lingyizhixiang">
+		<meta name="description" content="零一知享个人文章管理">
 		<!--<link href="../bootstrap/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
 		<link href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
 		<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">

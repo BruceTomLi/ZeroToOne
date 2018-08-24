@@ -15,7 +15,7 @@
 		 * 获取所有文章信息
 		 */
 		public function getArticleList(){
-			$page=$_REQUEST['page'];
+			$page=$_REQUEST['page']??1;
 			$articles=$this->articleManager->getArticleList($page);
 			$articlesCount=$this->articleManager->getArticlesCount();
 			$resultArr=array("articles"=>$articles,"count"=>$articlesCount);
