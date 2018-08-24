@@ -63,13 +63,13 @@
 						</ul>
 						<table class="table questionTable">								
 							<tbody>
-								<tr>
+								<!--<tr>
 									<td>
 										<img src="../img/boy.gif">
 									</td>
 									<td>
-										<p><a href="questionDetails.php">Ghost 0.7.0 中文版正式发布</a></p>
-										<p><span>分类</span>• 幸福快乐滴lion 回复了问题 • 4 人关注 • 4 个回复 • 1600 次浏览 • 23 小时前</p>
+										<p><a href="questionDetails.php">零一知享</a></p>
+										<p><span>分类</span>• 天上云 回复了问题 • 4 人关注 • 4 个回复 • 1600 次浏览 • 23 小时前</p>
 									</td>
 									<td>
 										<p>贡献</p>
@@ -81,8 +81,8 @@
 										<img src="../img/boy.gif">
 									</td>
 									<td>
-										<p><a href="questionDetails.php">Ghost 0.7.0 中文版正式发布</a></p>
-										<p><span>分类</span>• 幸福快乐滴lion 回复了问题 • 4 人关注 • 4 个回复 • 1600 次浏览 • 23 小时前</p>
+										<p><a href="questionDetails.php">零一知享</a></p>
+										<p><span>分类</span>• 天上云 回复了问题 • 4 人关注 • 4 个回复 • 1600 次浏览 • 23 小时前</p>
 									</td>
 									<td>
 										<p>贡献</p>
@@ -94,8 +94,8 @@
 										<img src="../img/boy.gif">
 									</td>
 									<td>
-										<p><a href="questionDetails.php">Ghost 0.7.0 中文版正式发布</a></p>
-										<p><span>分类</span>• 幸福快乐滴lion 回复了问题 • 4 人关注 • 4 个回复 • 1600 次浏览 • 23 小时前</p>
+										<p><a href="questionDetails.php">零一知享</a></p>
+										<p><span>分类</span>• 天上云 回复了问题 • 4 人关注 • 4 个回复 • 1600 次浏览 • 23 小时前</p>
 									</td>
 									<td>
 										<p>贡献</p>
@@ -107,18 +107,18 @@
 										<img src="../img/boy.gif">
 									</td>
 									<td>
-										<p><a href="questionDetails.php">Ghost 0.7.0 中文版正式发布</a></p>
-										<p><span>分类</span>• 幸福快乐滴lion 回复了问题 • 4 人关注 • 4 个回复 • 1600 次浏览 • 23 小时前</p>
+										<p><a href="questionDetails.php">零一知享</a></p>
+										<p><span>分类</span>• 天上云 回复了问题 • 4 人关注 • 4 个回复 • 1600 次浏览 • 23 小时前</p>
 									</td>
 									<td>
 										<p>贡献</p>
 										<p><img src="../img/boy.gif"></p>
 									</td>
-								</tr>
+								</tr>-->
 							</tbody>
 						</table>
 						<div class="pagination" id="paginationDiv">
-							<ul>
+							<!--<ul>
 								<li>
 									<a href="#">上一页</a>
 								</li>
@@ -140,7 +140,7 @@
 								<li>
 									<a href="#">下一页</a>
 								</li>
-							</ul>
+							</ul>-->
 						</div>
 						
 					</div>

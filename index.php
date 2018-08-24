@@ -37,7 +37,7 @@
 					<div class="row-fluid">
 						<div class="span8">
 							<div  id="articleDetail">
-								<div class="hero-unit">
+								<!--<div class="hero-unit">
 									<h1 class="artilceTitle">
 										示例信息
 									</h1>
@@ -72,11 +72,11 @@
 									<p>
 										<button  class="btn btn-primary defaultBtn">阅读全文</button>
 									</p>
-								</div>
+								</div>-->
 							</div>
 							
 							<div class="pagination" id="paginationDiv">
-								<ul>
+								<!--<ul>
 									<li>
 										<a href="#">上一页</a>
 									</li>
@@ -98,7 +98,7 @@
 									<li>
 										<a href="#">下一页</a>
 									</li>
-								</ul>
+								</ul>-->
 							</div>
 						</div>
 						<div class="span4"  id="rightNav">

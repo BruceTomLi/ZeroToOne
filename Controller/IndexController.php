@@ -17,6 +17,14 @@
 		public function getArticleList(){
 			$page=$_REQUEST['page']??1;
 			$articles=$this->articleManager->getArticleList($page);
+			if(is_array($articles)){
+				$pattern="/<[^<]*>/i";
+				foreach($articles as &$article){
+					$content=$article['articleContent'];
+					$content=preg_replace($pattern, "", $content);
+					$article['articleContent']=mb_substr($content, 0,100);
+				}
+			}
 			$articlesCount=$this->articleManager->getArticlesCount();
 			$resultArr=array("articles"=>$articles,"count"=>$articlesCount);
 			return json_encode($resultArr);

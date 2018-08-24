@@ -52,7 +52,7 @@
 		 */
 		function loadNotices(){
 			global $pdo;
-			$sql="select (select username from tb_user where userId=publisherId) as creator,tn.* from tb_notice tn order by tn.createTime desc";
+			$sql="select (select username from tb_user where userId=publisherId) as creator,tn.noticeId,tn.title,tn.createTime from tb_notice tn order by tn.createTime desc";
 			$notices=$pdo->getQueryResult($sql);
 			return $notices;
 		}
@@ -62,7 +62,7 @@
 		 */
 		function loadTwentyNotices(){
 			global $pdo;
-			$sql="select (select username from tb_user where userId=publisherId) as creator,tn.* from tb_notice tn order by tn.createTime desc limit 20";
+			$sql="select (select username from tb_user where userId=publisherId) as creator,noticeId,title,createTime from tb_notice order by createTime desc limit 20";
 			$notices=$pdo->getQueryResult($sql);
 			return $notices;
 		}

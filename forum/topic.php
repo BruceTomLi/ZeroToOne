@@ -61,12 +61,12 @@
 							</ul>-->
 							<table class="table topicTable">								
 								<tbody>
-									<tr>
+									<!--<tr>
 										<td>
 											<img src="../img/topic.png">
 										</td>
 										<td>
-											<p><span class="label label-info">Ghost</span></p>
+											<p><span class="label label-info">零一知享</span></p>
 											<p>7 个讨论 2 个关注</p>
 											<p>7 天新增 1 个讨论, 30 天新增 1 个讨论</p>
 										</td>
@@ -74,7 +74,7 @@
 											<img src="../img/topic.png">
 										</td>
 										<td>
-											<p><span class="label label-info">Ghost</span></p>
+											<p><span class="label label-info">零一知享</span></p>
 											<p>7 个讨论 2 个关注</p>
 											<p>7 天新增 1 个讨论, 30 天新增 1 个讨论</p>
 										</td>
@@ -84,7 +84,7 @@
 											<img src="../img/topic.png">
 										</td>
 										<td>
-											<p><span class="label label-info">Ghost</span></p>
+											<p><span class="label label-info">零一知享</span></p>
 											<p>7 个讨论 2 个关注</p>
 											<p>7 天新增 1 个讨论, 30 天新增 1 个讨论</p>
 										</td>
@@ -92,15 +92,15 @@
 											<img src="../img/topic.png">
 										</td>
 										<td>
-											<p><span class="label label-info">Ghost</span></p>
+											<p><span class="label label-info">零一知享</span></p>
 											<p>7 个讨论 2 个关注</p>
 											<p>7 天新增 1 个讨论, 30 天新增 1 个讨论</p>
 										</td>
-									</tr>									
+									</tr>-->
 								</tbody>
 							</table>
 							<div class="pagination" id="paginationDiv">
-								<ul>
+								<!--<ul>
 									<li>
 										<a href="#">上一页</a>
 									</li>
@@ -122,7 +122,7 @@
 									<li>
 										<a href="#">下一页</a>
 									</li>
-								</ul>
+								</ul>-->
 							</div>
 						</div>
 						<div class="span3 right-nav">

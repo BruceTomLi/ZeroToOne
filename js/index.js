@@ -23,11 +23,13 @@ function getArticleList(){
 					articlesHtml+="<div class='hero-unit'>";
 					articlesHtml+="<h1 class='artilceTitle'>"+value.title+"</h1>";
 					articlesHtml+="<span>作者："+value.author+" - "+value.publishDate+"</span>";
-					var onlyText="";//要先过滤掉特殊的html代码，只留下纯文本
-					var sourceHtml=value.articleContent;
-					var reg=new RegExp("<[^<]*>", "gi");  
-					onlyText=sourceHtml.replace(reg,"");
-					articlesHtml+="<p>"+onlyText.substr(0,100)+"</p>";
+					//要先过滤掉特殊的html代码，只留下纯文本，这个逻辑应该写在php中，否则发送到浏览器的内容还是完整的，对带宽不利
+					// var onlyText="";
+					// var sourceHtml=value.articleContent;
+					// var reg=new RegExp("<[^<]*>", "gi");  
+					// onlyText=sourceHtml.replace(reg,"");
+					// articlesHtml+="<p>"+onlyText.substr(0,100)+"</p>";
+					articlesHtml+="<p>"+value.articleContent+"</p>";
 					articlesHtml+="<p><a class='btn btn-primary' target='_blank' href='forum/articleDetails.php?articleId="+value.articleId+"'>阅读全文</a></p>";
 					articlesHtml+="</div>";
 				});

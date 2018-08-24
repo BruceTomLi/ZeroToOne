@@ -24,7 +24,6 @@
 		<script src="https://cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
 		
 		<link href="../css/index.css" rel="stylesheet" type="text/css">
-		<script src="../js/index.js"></script>
 		<link href="../css/articleDetails.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>

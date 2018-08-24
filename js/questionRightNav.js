@@ -23,7 +23,7 @@ function getTenHotTopics(){
 					topicsHtml+="<tr class='threeQuestionsTrs'>";
 				}
 				// topicsHtml+="<td><img src='../img/tradeImgs/"+value.topicType+".gif'></td>";
-				topicsHtml+="<td><p><a target='_blank' class='btn-link' href='topicDetails.php?topicId="+value.topicId+"'>"+value.content+"</a>&nbsp;&nbsp;<span>"+value.commentCount+"条评论</span></p></td>";
+				topicsHtml+="<td><p><a class='btn-link' href='topicDetails.php?topicId="+value.topicId+"'>"+value.content+"</a>&nbsp;&nbsp;<span>"+value.commentCount+"条评论</span></p></td>";
 				topicsHtml+="</tr>";				
 			});
 			$("#hotTopicsTable tbody").html(topicsHtml);	
