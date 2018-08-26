@@ -36,6 +36,8 @@
 					$this->saveVisitorRecord();
 				}
 			}			
+			//记录访客调用系统函数的次数，分析恶意占用带宽的行为
+			$this->saveVisitorCallCount();
 		}
 		/**
 		 * 下面的注册方法是填写完整信息之后进行注册
@@ -257,11 +259,13 @@
 		function logout(){					
 			if(isset($_SESSION['username'])){
 				//这里使用@是因为在session_start()函数前面如果有其他输出，就会报警告，主要是为phpunit设置的
-				//默认isPHPUnit是false，防止生产环境中一直报session已经start并报错发邮件
+				//默认isPHPUnit是false，防止生产环境中一直报session已经start并报错发邮件，测试的时候只销毁username的session信息，防止重复记录访客访问次数
 				if($this->isPHPUnit==true){
 					@session_start();
+					unset($_SESSION['username']);
+				}else{
+					session_destroy();
 				}
-				session_destroy();
 				return true;
 			}
 			else{
@@ -1713,7 +1717,7 @@
 			if($this->isVisitorExist()){
 				$paraArr=array(":visitTime"=>$visitTime,":visitorName"=>$visitorName,":visitorIp"=>$visitorIp);
 				$sql="update tb_visit set visitTime=:visitTime,visitCount=visitCount+1 ";
-				$sql.=" where visitorId=(select userId from tb_user where username=:visitorName) and visitorIp=:visitorIp";
+				$sql.=" where visitorId=(select case when count(userId)>0 then userId else 'notLogon' end from tb_user where username=:visitorName) and visitorIp=:visitorIp";
 				$count=$pdo->getUIDResult($sql,$paraArr);
 				return $count;
 			}else{//访客信息不存在（第一次访问网站，就记录下访问信息）
@@ -1725,7 +1729,21 @@
 				return $count;
 			}
 		}
-		
+
+		/**
+		 * 保存访问者调用系统的次数信息，用于分析是否用人恶意占用带宽
+		 * 不用进行判断，如果没有获取到信息，就不会更新表
+		 */
+		function saveVisitorCallCount(){
+			global $pdo;
+			$visitorName=$_SESSION['username']??"";
+			$visitorIp=IpHandler::getIP();
+			$paraArr=array(":visitorName"=>$visitorName,":visitorIp"=>$visitorIp);
+			$sql="update tb_visit set callCount=callCount+1 ";
+			$sql.=" where visitorId=(select case when count(userId)>0 then userId else 'notLogon' end from tb_user where username=:visitorName) and visitorIp=:visitorIp";
+			$count=$pdo->getUIDResult($sql,$paraArr);
+			return $count;
+		}
 		
 	}
 ?>

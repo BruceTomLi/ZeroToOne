@@ -891,6 +891,14 @@
 			$this->assertTrue(is_numeric($count) && $count>0);
 		}
 		
+		/**
+		 * 测试记录访客调用系统函数的次数
+		 */
+		function testSaveVisitorCallCount(){
+			$count=$this->user->saveVisitorCallCount();
+			$this->assertTrue(is_numeric($count) && $count>0);
+		}
+		
 		
 	}
 
