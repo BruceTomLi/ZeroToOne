@@ -48,6 +48,7 @@ function searchVisitInfo(){
 					visitInfoList+="<td>"+value.visitTime+"</td>";
 					visitInfoList+="<td>"+value.visitorIP+"</td>";
 					visitInfoList+="<td>"+value.visitCount+"</td>";
+					visitInfoList+="<td>"+value.callCount+"</td>";
 					visitInfoList+="</tr>";
 				});
 				$("#visitInfoTable tbody").html(visitInfoList);

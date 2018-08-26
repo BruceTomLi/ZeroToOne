@@ -52,6 +52,7 @@
 									<th>最后访问时间</th>
 									<th>IP地址</th>
 									<th>访问次数</th>
+									<th>调用次数</th>
 								</tr>							
 							</thead>
 							<tbody>
@@ -67,6 +68,9 @@
 									</td>
 									<td>
 										5
+									</td>
+									<td>
+										100
 									</td>
 								</tr>							
 							</tbody>
