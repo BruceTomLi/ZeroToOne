@@ -1,8 +1,8 @@
 <?php
 	require_once(__DIR__."/../Controller/NoticeManageController.php");
 	$noticeManageController=new NoticeManageController();
-	$noticeId=$_REQUEST['noticeId']??"";
-	$result=$noticeManageController->loadNoticeDetails($noticeId);
+	// $noticeId=$_REQUEST['noticeId']??"";//不用获取，Controller中会获取并处理
+	$result=$noticeManageController->loadNoticeDetails();
 	$resultArr=json_decode($result,true);
 	$noticeDetails=$resultArr["notice"][0]??"";
 ?>
@@ -43,7 +43,7 @@
 								<p id="detailsAuthor">作者：<span><?php echo $noticeDetails['creator']??"未获取到公告发布者"; ?></span></p>
 								<section id="detailsContent">
 									<?php
-										echo $noticeDetails['content']??"未获取到公告内容";
+										echo $noticeDetails['noticeContent']??"未获取到公告内容";
 									?>
 								</section>
 							</article>

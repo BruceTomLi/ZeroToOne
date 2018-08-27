@@ -49,7 +49,7 @@
 			$noticeId=$_REQUEST['noticeId']??"";
 			$notice=$this->operator->loadNoticeDetails($noticeId);
 			$resultArr=array("notice"=>$notice);
-			$result=json_encode($resultArr);
+			$result=json_encode($resultArr,true);
 			return $result;
 		}
 		
