@@ -26,18 +26,25 @@
 			$this->isPHPUnit=$isPHPUnit;
 			//对访客进行记录，使用$_SESSION['visit']来判断，对一次会话进行一次记录
 			if(!isset($_SESSION['visit'])){
+				$this->setPerCallCountToZero();
 				$_SESSION['visit']="begin";
 				$this->saveVisitorRecord();
 			}
 			//用户登录之后再记录一次，通过改变$_SESSION['visit']的值，使得程序只能执行一次
 			if(isset($_SESSION['visit'])){
 				if($_SESSION['visit']=="begin" && isset($_SESSION['username'])){
+					$this->setPerCallCountToZero();
 					$_SESSION['visit']="twice";
 					$this->saveVisitorRecord();
 				}
 			}			
 			//记录访客调用系统函数的次数，分析恶意占用带宽的行为
 			$this->saveVisitorCallCount();
+			//判断用户是否使用DDOS攻击，如果是的，就将其加入黑名单
+			if($this->isUserDoingDDOS()){
+				$ip=IpHandler::getIP();
+				$this->addIPToBlackList($ip);
+			}
 		}
 		/**
 		 * 下面的注册方法是填写完整信息之后进行注册
@@ -1739,11 +1746,47 @@
 			$visitorName=$_SESSION['username']??"";
 			$visitorIp=IpHandler::getIP();
 			$paraArr=array(":visitorName"=>$visitorName,":visitorIp"=>$visitorIp);
-			$sql="update tb_visit set callCount=callCount+1 ";
+			$sql="update tb_visit set callCount=callCount+1,perCallCount=perCallCount+1 ";
 			$sql.=" where visitorId=(select case when count(userId)>0 then userId else 'notLogon' end from tb_user where username=:visitorName) and visitorIp=:visitorIp";
 			$count=$pdo->getUIDResult($sql,$paraArr);
 			return $count;
 		}
 		
+		/**
+		 * 判断用户是否访问系统频率过高（过高会导致服务器带宽被占用，其他人无法使用系统，也就是DDOS攻击）
+		 * 对于这用用户，应该将其添加到操作系统防火墙的黑名单中
+		 */
+		function isUserDoingDDOS(){
+			global $pdo;
+			$visitorName=$_SESSION['username']??"";
+			$visitorIp=IpHandler::getIP();
+			$paraArr=array(":visitorName"=>$visitorName,":visitorIP"=>$visitorIp);
+			$sql="call pro_isUserDoingDDOS(:visitorIP,:visitorName)";
+			$isDDOS=$pdo->getOneFiled($sql, "isDDOS",$paraArr);
+			return $isDDOS=="yes"?true:false;
+		}
+		
+		/**
+		 * 重置本次会话调用程序次数
+		 * 为了检测DDOS攻击，在用户登录系统的时候，如果没有设置session["visit"]，就应该将perCallCount设置为0
+		 * DDOS只能通过检测本次访问调用次数来判断（总次数会逐渐累加增多，不能用它进行判断）
+		 */
+		function setPerCallCountToZero(){
+			global $pdo;
+			$visitorName=$_SESSION['username']??"";
+			$visitorIp=IpHandler::getIP();
+			$paraArr=array(":visitorName"=>$visitorName,":visitorIp"=>$visitorIp);
+			$sql="update tb_visit set perCallCount=0 ";
+			$sql.=" where visitorId=(select case when count(userId)>0 then userId else 'notLogon' end from tb_user where username=:visitorName) and visitorIp=:visitorIp";
+			$count=$pdo->getUIDResult($sql,$paraArr);
+			return $count;
+		}
+		
+		/**
+		 * 将进行DDOS攻击的IP添加到操作系统的防火墙黑名单中
+		 */
+		function addIPToBlackList($ip="unkonwnIp"){
+			exec("iptables -A INPUT -s $ip -j DROP");
+		}
 	}
 ?>

@@ -51,8 +51,9 @@
 									<th>访问者</th>
 									<th>最后访问时间</th>
 									<th>IP地址</th>
-									<th>访问次数</th>
-									<th>调用次数</th>
+									<th>总访问次数</th>
+									<th>总调用次数</th>
+									<th>本次调用次数</th>
 								</tr>							
 							</thead>
 							<tbody>
@@ -71,6 +72,9 @@
 									</td>
 									<td>
 										100
+									</td>
+									<td>
+										59
 									</td>
 								</tr>							
 							</tbody>

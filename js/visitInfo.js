@@ -49,6 +49,7 @@ function searchVisitInfo(){
 					visitInfoList+="<td>"+value.visitorIP+"</td>";
 					visitInfoList+="<td>"+value.visitCount+"</td>";
 					visitInfoList+="<td>"+value.callCount+"</td>";
+					visitInfoList+="<td>"+value.perCallCount+"</td>";
 					visitInfoList+="</tr>";
 				});
 				$("#visitInfoTable tbody").html(visitInfoList);
